@@ -1,0 +1,22 @@
+/* =========================================
+   KHUSUS TAMPILAN HP (MAX-WIDTH: 767px)
+   ========================================= */
+@media (max-width: 767px) {
+  /* Profil berbentuk bulat, rapi di tengah, dengan efek shadow merah */
+  .mobile-profile-box {
+    max-width: 200px !important;
+    margin: 0 auto 2rem auto !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 15px 35px -10px rgba(59, 130, 246, 0.4) !important;
+  }
+  
+  /* Teks rata tengah agar seimbang dengan foto di HP */
+  .mobile-about-text {
+    text-align: center !important;
+  }
+  .mobile-about-text p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
