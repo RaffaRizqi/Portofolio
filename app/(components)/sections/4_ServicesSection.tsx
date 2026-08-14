@@ -15,12 +15,15 @@ export function ServicesSection() {
     <section id="services" className={styles.section}>
       <div className={styles.container}>
         <Reveal variant="slide-up">
-          <span className={`${styles.eyebrow} ${styles.textCenter}`}>LAYANAN &amp; KEAHLIAN</span>
-          <TextReveal text="Apa Yang Bisa Saya Pengerjakan?" className={`${styles.sectionTitle} ${styles.textCenter}`} charDelay={45} />
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <span className={styles.eyebrow}>LAYANAN &amp; KEAHLIAN</span>
+            <TextReveal text="Apa Yang Bisa Saya Pengerjakan?" className={styles.sectionTitle} charDelay={45} />
+          </div>
         </Reveal>
+        
         <div className={`${styles.grid3} ${styles.servicesGrid}`}>
           {SERVICES.map((service, i) => (
-            <Reveal key={i} delay={i * 120} variant={i % 3 === 0 ? 'slide-left' : i % 3 === 1 ? 'scale' : 'slide-right'}>
+            <Reveal key={i} delay={i * 100} variant="slide-up">
               <div className={styles.serviceCard}>
                 <div className={styles.serviceIcon}>
                   {service.icon}
@@ -31,7 +34,8 @@ export function ServicesSection() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={250} variant="clip-up">
+        
+        <Reveal delay={200} variant="slide-up">
           <div className={styles.processPanel}>
             <div className={styles.processHeader}>
               <span className={styles.eyebrow}>ALUR PENGERJAAN</span>
@@ -39,7 +43,7 @@ export function ServicesSection() {
             </div>
             <div className={styles.processGrid}>
               {PROCESS.map((item, i) => (
-                <Reveal key={item.step} delay={300 + i * 100} variant="slide-up">
+                <Reveal key={item.step} delay={250 + i * 80} variant="slide-up">
                   <div className={styles.processItem}>
                     <span>{item.step}</span>
                     <strong>{item.title}</strong>

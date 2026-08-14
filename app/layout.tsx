@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     'Vue developer',
     'Next.js developer',
     'RebaMedia',
-    'BosNokos',
+    'RebaSIM',
   ],
   authors: [{ name: 'Raffa Rizqi Ramdani', url: siteUrl }],
   creator: 'Raffa Rizqi Ramdani',
@@ -110,12 +110,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Raffa Rizqi - Full Stack Developer Portfolio',
-    description: 'Portfolio Raffa Rizqi Ramdani: project RebaMedia, BosNokos, SMKN 2 Tasikmalaya, Full Stack React, Vue, Laravel, MySQL, dan Vercel.',
+    description: 'Portfolio Raffa Rizqi Ramdani: project RebaMedia, RebaSIM, SMKN 2 Tasikmalaya, Full Stack React, Vue, Laravel, MySQL, dan Vercel.',
     url: siteUrl,
     siteName: 'Raffa Rizqi Portfolio',
     images: [
       {
-        url: '/bosnokos-preview.png',
+        url: '/rebasim-preview.png',
         width: 1897,
         height: 907,
         alt: 'Raffa Rizqi Portfolio Preview',
@@ -128,7 +128,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Raffa Rizqi - Full Stack Developer Portfolio',
     description: 'Portfolio Raffa Rizqi Ramdani: Full Stack Web Developer, Next.js, React, Vue, Laravel, MySQL, dan API integration.',
-    images: ['/bosnokos-preview.png'],
+    images: ['/rebasim-preview.png'],
   },
 }
 

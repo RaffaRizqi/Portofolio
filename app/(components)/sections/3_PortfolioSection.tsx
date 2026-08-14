@@ -14,7 +14,7 @@ export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const displayProjects = PROJECTS.filter((project) => (project.link && project.link !== '#') || ('isComingSoon' in project && project.isComingSoon));
-  const featuredProject = PROJECTS.find((project) => project.title === 'BosNokos OTP Wallet') ?? PROJECTS[0];
+  const featuredProject = PROJECTS.find((project) => project.title === 'RebaSIM OTP Wallet') ?? PROJECTS[0];
   const featuredHighlights = ['Kalkulasi Harga OTP Realtime', 'Supabase Auth & Database', 'Deposit Pakasir Otomatis', 'Responsive HP & Desktop'];
 
   const filteredProjects = activeFilter === 'All'

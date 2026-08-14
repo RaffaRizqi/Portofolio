@@ -6,59 +6,62 @@ import styles from './sections.module.css';
 import { Magnetic } from '../ui/Magnetic';
 import { ParallaxSection } from '../ui/ParallaxSection';
 
+const ROLES = [
+  'Full Stack Developer',
+  'Frontend Specialist',
+  'Next.js 14 & React Engineer',
+  'Web App Developer',
+  'TypeScript & API Builder'
+];
+
 export function HeroSection() {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
-  const [isTypingLine1, setIsTypingLine1] = useState(true);
+  const [typedRole, setTypedRole] = useState('');
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  const fullText1 = "Halo, saya Raffa,";
-  const fullText2 = 'Full Stack Developer';
   const whatsappUrl = 'https://wa.me/62895622494773?text=Halo%20Raffa,%20saya%20tertarik%20dengan%20portfolio%20kamu';
   const heroStats = [
     { value: '15+', label: 'Web diselesaikan' },
     { value: '100%', label: 'Responsive HP' },
     { value: 'Fast', label: 'Loading cepat' }
   ];
-  const heroPills = ['Next.js 14', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase'];
+  const heroPills = ['Next.js 14', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'REST API'];
   const showcaseProjects = [
-    { name: 'BosNokos', image: '/bosnokos-preview.png', label: 'OTP Wallet' },
+    { name: 'RebaSIM', image: '/rebasim-preview.png', label: 'OTP Wallet' },
     { name: 'RebaMedia', image: '/raffzsmm-preview.png', label: 'SMM Panel' }
   ];
 
+  // Infinite looping typewriter effect for the role title
   useEffect(() => {
-    let i = 0;
-    let j = 0;
-    let interval: NodeJS.Timeout;
+    const currentRole = ROLES[roleIndex];
     let timeout: NodeJS.Timeout;
 
-    const typeLine2 = () => {
-      setIsTypingLine1(false);
-      interval = setInterval(() => {
-        j++;
-        setText2(fullText2.slice(0, j));
-        if (j >= fullText2.length) clearInterval(interval);
-      }, 70);
-    };
+    if (!isDeleting) {
+      if (typedRole.length < currentRole.length) {
+        timeout = setTimeout(() => {
+          setTypedRole(currentRole.slice(0, typedRole.length + 1));
+        }, 75);
+      } else {
+        // Finished typing word, pause before deleting
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 1800);
+      }
+    } else {
+      if (typedRole.length > 0) {
+        timeout = setTimeout(() => {
+          setTypedRole(currentRole.slice(0, typedRole.length - 1));
+        }, 40);
+      } else {
+        // Finished deleting, move to next role
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+      }
+    }
 
-    const typeLine1 = () => {
-      interval = setInterval(() => {
-        i++;
-        setText1(fullText1.slice(0, i));
-        if (i >= fullText1.length) {
-          clearInterval(interval);
-          timeout = setTimeout(typeLine2, 180);
-        }
-      }, 70);
-    };
-
-    timeout = setTimeout(typeLine1, 400);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [typedRole, isDeleting, roleIndex]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!boxRef.current) return;
@@ -81,8 +84,6 @@ export function HeroSection() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.glowBlue}></div>
-
       <div className={`${styles.container} ${styles.grid2}`}>
         <div>
           <div className={styles.badge}>
@@ -91,11 +92,12 @@ export function HeroSection() {
           </div>
           
           <h1 className={styles.title}>
-            {text1}
-            {isTypingLine1 && <span className={styles.cursor}>|</span>}
+            Halo, saya Raffa,
             <br />
-            <span className={styles.gradientText}>{text2}</span>
-            {!isTypingLine1 && <span className={styles.cursor}>|</span>}
+            <span className={styles.gradientText}>
+              {typedRole}
+              <span className={styles.cursor}>|</span>
+            </span>
           </h1>
 
           <p className={styles.desc}>

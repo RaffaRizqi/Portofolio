@@ -11,6 +11,7 @@ import { Preloader } from './(components)/ui/Preloader';
 import { ScrollProgress } from './(components)/ui/ScrollProgress';
 import { BackToTop } from './(components)/ui/BackToTop';
 import { SmoothScroll } from './(components)/ui/SmoothScroll';
+import { BackgroundEffect } from './(components)/ui/BackgroundEffect';
 
 import type { Viewport } from 'next';
 
@@ -24,6 +25,7 @@ export const viewport: Viewport = {
 export default function Home() {
   return (
     <main>
+      <BackgroundEffect />
       <SmoothScroll />
       <ScrollProgress />
       <Preloader />

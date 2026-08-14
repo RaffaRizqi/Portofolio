@@ -32,12 +32,12 @@ export const PROJECTS = [
     link: 'https://www.rebamedia.my.id'
   },
   {
-    title: 'BosNokos OTP Wallet',
-    description: 'Platform dompet digital OTP dengan kalkulasi harga provider realtime, deposit Pakasir otomatis, dan dashboard responsif.',
+    title: 'RebaSIM OTP Wallet',
+    description: 'Platform order nomor virtual OTP realtime dengan saldo prepaid, deposit otomatis, kalkulasi provider realtime, dan dashboard responsif.',
     techStack: ['Next.js 14', 'TypeScript', 'Supabase Auth', 'Pakasir Webhook'],
     category: ['Web', 'UI/UX', 'Backend'],
-    image: '/bosnokos-preview.png',
-    link: 'https://bosnokos.raffzdigital.biz.id'
+    image: '/rebasim-preview.png',
+    link: 'https://www.rebasim.my.id'
   },
   {
     title: 'Raffz Top Up (PPOB & Game Voucher v2)',
