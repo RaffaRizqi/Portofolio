@@ -53,7 +53,7 @@ export const PROJECTS = [
     techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Vercel'],
     category: ['Web', 'UI/UX'],
     image: '/porto-preview.png',
-    link: 'https://www.raffzdigital.biz.id'
+    link: 'https://porto.raffzdigital.biz.id'
   },
   {
     title: 'Website Top Up Game (v1 Legacy)',

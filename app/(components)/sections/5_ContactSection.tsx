@@ -106,7 +106,7 @@ export function ContactSection() {
                 },
                 {
                   name: 'GitHub RaffaStore',
-                  url: 'https://github.com/RaffaStr',
+                  url: 'https://github.com/RaffaRizqi',
                   icon: <Github size={24} />
                 },
                 {

@@ -5,7 +5,7 @@ import { Reveal } from '../ui/Reveal';
 import { TextReveal } from '../ui/TextReveal';
 
 const WHATSAPP_URL = 'https://wa.me/62895622494773?text=Halo%20Raffa,%20saya%20tertarik%20dengan%20profil%20dan%20CV%20kamu';
-const GITHUB_URL = 'https://github.com/RaffaStr';
+const GITHUB_URL = 'https://github.com/RaffaRizqi';
 const SMM_URL = 'https://www.rebamedia.my.id';
 
 const WHY_HIRE = [

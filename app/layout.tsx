@@ -46,7 +46,7 @@ const jsonLd = {
         'API Integration',
       ],
       sameAs: [
-        'https://github.com/RaffaStr',
+        'https://github.com/RaffaRizqi',
         'https://www.instagram.com/raffa.r07',
         'https://www.tiktok.com/@Raffarizqi02',
         'https://x.com/RaffaRizqi02',
