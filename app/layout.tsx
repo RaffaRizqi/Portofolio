@@ -108,6 +108,14 @@ const jsonLd = {
         {
           '@type': 'SoftwareApplication',
           position: 1,
+          name: 'DicodingAja — Full-Stack Agency & Custom CMS',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web',
+          description: 'Decoupled Full-Stack Web App for digital agency with React.js Vite frontend and Laravel 11 REST API backend with Sanctum Auth and custom CMS dashboard.',
+        },
+        {
+          '@type': 'SoftwareApplication',
+          position: 2,
           name: 'RebaSIM OTP Wallet',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
@@ -116,7 +124,7 @@ const jsonLd = {
         },
         {
           '@type': 'SoftwareApplication',
-          position: 2,
+          position: 3,
           name: 'RebaMedia SMM Panel',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
@@ -125,7 +133,7 @@ const jsonLd = {
         },
         {
           '@type': 'SoftwareApplication',
-          position: 3,
+          position: 4,
           name: 'Website SMKN 2 Tasikmalaya',
           applicationCategory: 'EducationalApplication',
           operatingSystem: 'Web',
@@ -150,6 +158,7 @@ export const metadata: Metadata = {
     'Full Stack Developer Indonesia',
     'Full Stack Web Developer Tasikmalaya',
     'Web Developer Tasikmalaya',
+    'DicodingAja',
     'Next.js 14 Developer',
     'React Developer Indonesia',
     'Laravel Developer Indonesia',

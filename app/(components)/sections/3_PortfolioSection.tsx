@@ -202,15 +202,16 @@ export function PortfolioSection() {
                   className={styles.modalAction}
                   disabled
                   style={{
-                    opacity: 0.9,
+                    opacity: 1,
                     cursor: 'not-allowed',
-                    background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-                    color: '#ffffff',
+                    background: '#fde047',
+                    color: '#121316',
                     display: 'block',
-                    width: '100%'
+                    width: '100%',
+                    fontWeight: 900
                   }}
                 >
-                  Coming Soon (Full Stack React + Vue + Laravel)
+                  Status: Coming Soon (Dalam Tahap Pengembangan)
                 </button>
               ) : selectedProject.link && selectedProject.link !== '#' ? (
                 <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className={styles.modalAction} style={{ display: 'block', textDecoration: 'none' }}>

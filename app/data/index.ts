@@ -18,6 +18,15 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    title: 'DicodingAja — Full-Stack Agency & Custom CMS',
+    description: 'Decoupled Full-Stack Web App untuk digital agency. Frontend modern React.js + Vite + Tailwind CSS dengan sistem multi-bahasa (i18n), backend Laravel 11 REST API, MySQL database, sistem autentikasi Laravel Sanctum, dan Admin Dashboard CMS lengkap.',
+    techStack: ['React.js', 'Vite', 'Tailwind CSS', 'Laravel 11', 'MySQL', 'Sanctum Auth', 'REST API'],
+    category: ['Web', 'Backend', 'UI/UX'],
+    image: '/dicodingaja-preview.png',
+    link: '#',
+    isComingSoon: true
+  },
+  {
     title: 'Website SMKN 2 Tasikmalaya (Full Stack)',
     description: 'Sistem informasi & portal website resmi sekolah SMKN 2 Tasikmalaya. Dikembangkan full stack dengan React, Vue.js, Laravel REST API, dan database MySQL.',
     techStack: ['React', 'Vue.js', 'Laravel', 'MySQL', 'Full Stack'],
