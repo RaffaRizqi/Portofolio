@@ -42,8 +42,6 @@ export function ContactSection() {
 
   return (
     <section id="contact" className={styles.section}>
-      <div className={styles.glowRed} style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}></div>
-      
       {/* Big velocity text */}
       <div style={{ marginBottom: '2rem' }}>
         <ScrollVelocityText
@@ -71,7 +69,7 @@ export function ContactSection() {
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={`${styles.contactCtaPrimary} ${styles.contactCtaWhatsApp}`}>
                 WhatsApp Chat <MessageCircle size={16} />
               </a>
-              <a href="/cv.html" className={styles.contactCtaSecondary} style={{ borderColor: 'rgba(37, 99, 235, 0.4)', color: '#60a5fa' }}>
+              <a href="/cv.html" className={styles.contactCtaSecondary}>
                 Review ATS CV <FileText size={16} />
               </a>
               <a href="mailto:raffaxzee@gmail.com?subject=Recruitment%20/%20Web%20Inquiry" className={styles.contactCtaSecondary}>
