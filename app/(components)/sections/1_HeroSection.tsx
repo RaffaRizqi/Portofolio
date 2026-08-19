@@ -1,17 +1,17 @@
 'use client';
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Download, MessageCircle } from 'lucide-react';
+import { ArrowRight, Download, MessageCircle, Globe2 } from 'lucide-react';
 import styles from './sections.module.css';
 import { Magnetic } from '../ui/Magnetic';
 import { ParallaxSection } from '../ui/ParallaxSection';
 
 const ROLES = [
   'Full Stack Developer',
-  'Frontend Specialist',
-  'Next.js 14 & React Engineer',
-  'Web App Developer',
-  'TypeScript & API Builder'
+  'Next.js 14 & React Builder',
+  'Laravel & REST API Engineer',
+  'Full Stack Web App Developer',
+  'TypeScript & Database Specialist'
 ];
 
 export function HeroSection() {
@@ -24,9 +24,9 @@ export function HeroSection() {
   const heroStats = [
     { value: '15+', label: 'Web diselesaikan' },
     { value: '100%', label: 'Responsive HP' },
-    { value: 'Fast', label: 'Loading cepat' }
+    { value: 'HSK 5', label: 'Mandarin Fluent' }
   ];
-  const heroPills = ['Next.js 14', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'REST API'];
+  const heroPills = ['Next.js 14', 'React', 'Laravel', 'Vue.js', 'TypeScript', 'MySQL', 'Supabase', 'Mandarin HSK 5'];
   const showcaseProjects = [
     { name: 'RebaSIM', image: '/rebasim-preview.png', label: 'OTP Wallet' },
     { name: 'RebaMedia', image: '/raffzsmm-preview.png', label: 'SMM Panel' }
@@ -88,7 +88,7 @@ export function HeroSection() {
         <div>
           <div className={styles.badge}>
             <span className={styles.dot}></span>
-            <span>Open for Web Developer Jobs &amp; Freelance</span>
+            <span>Open for Full Stack Developer Jobs &amp; Freelance</span>
           </div>
           
           <h1 className={styles.title}>
@@ -101,7 +101,7 @@ export function HeroSection() {
           </h1>
 
           <p className={styles.desc}>
-            Saya adalah Full Stack Developer dari Tasikmalaya yang fokus membangun website dan web app modern berbasis <strong>React, Next.js, Vue, Laravel, dan MySQL/Supabase</strong>. Terbiasa menangani alur frontend responsif, integrasi API &amp; database, sampai deploy ke Vercel.
+            Saya adalah <strong>Full Stack Developer</strong> dari Tasikmalaya yang fokus membangun website dan web app modern secara end-to-end berbasis <strong>React, Next.js 14, Vue, Laravel, TypeScript, MySQL, dan Supabase</strong>. Siap menangani UI responsive, integrasi REST API, database, pembayaran otomatis, dan memiliki kemahiran <strong>Bahasa Mandarin (HSK 5)</strong>.
           </p>
 
           <div className={styles.heroPills}>
@@ -151,7 +151,7 @@ export function HeroSection() {
               <div className={styles.deviceScreen}>
                 <Image
                   src={showcaseProjects[0].image}
-                  alt={`${showcaseProjects[0].name} preview`}
+                  alt={`${showcaseProjects[0].name} - RebaSIM Full Stack OTP Web App`}
                   fill
                   sizes="(min-width: 1024px) 44vw, 100vw"
                   className={styles.deviceImage}
@@ -162,14 +162,14 @@ export function HeroSection() {
                 <div className={styles.phoneTop}></div>
                 <Image
                   src={showcaseProjects[1].image}
-                  alt={`${showcaseProjects[1].name} preview`}
+                  alt={`${showcaseProjects[1].name} - RebaMedia Full Stack SMM Web App`}
                   fill
                   sizes="180px"
                   className={styles.phoneImage}
                 />
               </div>
               <div className={styles.visualPanel}>
-                <span>PROJECT LIVE</span>
+                <span>FULL STACK LIVE</span>
                 <strong>Aktif di Production</strong>
                 <p>{showcaseProjects.map((project) => `${project.name} ${project.label}`).join(' / ')}</p>
               </div>

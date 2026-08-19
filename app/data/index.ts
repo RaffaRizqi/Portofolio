@@ -1,22 +1,25 @@
 import React from 'react';
-import { Bot, Code, Layout, Server } from 'lucide-react';
+import { Bot, Code, Database, Layout, Server, Smartphone } from 'lucide-react';
 
 export const SKILLS = [
-  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
   { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
   { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+  { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+  { name: 'Laravel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
+  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
   { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
   { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
+  { name: 'Git / GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
   { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' }
 ];
 
 export const PROJECTS = [
   {
     title: 'Website SMKN 2 Tasikmalaya (Full Stack)',
-    description: 'Sistem informasi & portal website resmi sekolah SMKN 2 Tasikmalaya. Dikembangkan full stack sendiri dengan React, Vue.js, Laravel REST API, dan database MySQL.',
+    description: 'Sistem informasi & portal website resmi sekolah SMKN 2 Tasikmalaya. Dikembangkan full stack dengan React, Vue.js, Laravel REST API, dan database MySQL.',
     techStack: ['React', 'Vue.js', 'Laravel', 'MySQL', 'Full Stack'],
     category: ['Web', 'UI/UX', 'Backend'],
     image: '/smkn2-preview.png',
@@ -25,7 +28,7 @@ export const PROJECTS = [
   },
   {
     title: 'RebaMedia (Web App SMM)',
-    description: 'Web app SMM panel dengan antarmuka Next.js 14, login Supabase, deposit QRIS otomatis, dan API reseller.',
+    description: 'Web app SMM panel dengan antarmuka Next.js 14, login Supabase, deposit QRIS otomatis, dan integrasi REST API reseller 24/7.',
     techStack: ['Next.js 14', 'TypeScript', 'Supabase', 'QRIS Payment', 'REST API'],
     category: ['Web', 'UI/UX', 'Backend'],
     image: '/raffzsmm-preview.png',
@@ -49,7 +52,7 @@ export const PROJECTS = [
   },
   {
     title: 'Website Portofolio Interaktif',
-    description: 'Portofolio interaktif berbasis Next.js 14 dengan smooth scroll, custom cursor, animasi reveal, dan responsive layout.',
+    description: 'Portofolio interaktif berbasis Next.js 14 dengan gaya Neo-Brutalism, smooth scroll, animasi reveal, SEO Schema, dan responsive layout.',
     techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Vercel'],
     category: ['Web', 'UI/UX'],
     image: '/porto-preview.png',
@@ -98,8 +101,8 @@ export const PROJECTS = [
 ];
 
 export const SERVICES = [
-  { icon: React.createElement(Layout, { className: "w-6 h-6" }), title: 'Frontend & Web Development', desc: 'Membangun website responsif, rapi, dan cepat menggunakan React, Next.js 14, TypeScript, dan Tailwind CSS.' },
-  { icon: React.createElement(Code, { className: "w-6 h-6" }), title: 'Web App & Dashboard', desc: 'Pengembangan antarmuka admin, dashboard transaksi, form interaktif, dan alur modul web app.' },
-  { icon: React.createElement(Server, { className: "w-6 h-6" }), title: 'Integrasi API & Backend', desc: 'Menghubungkan frontend ke REST API, database Supabase/MySQL, autentikasi user, dan payment gateway.' },
-  { icon: React.createElement(Bot, { className: "w-6 h-6" }), title: 'Otomatisasi & Bot WhatsApp', desc: 'Membuat bot notifikasi pesanan, auto reply WhatsApp, dan integrasi webhook operasional web.' }
+  { icon: React.createElement(Layout, { className: "w-6 h-6" }), title: 'Full Stack Web Development', desc: 'Membangun aplikasi website lengkap dari frontend responsif hingga backend REST API menggunakan Next.js 14, React, Vue, Laravel, dan TypeScript.' },
+  { icon: React.createElement(Server, { className: "w-6 h-6" }), title: 'Backend & Database Architecture', desc: 'Perancangan skema database MySQL & Supabase, endpoint REST API, autentikasi user aman, dan integrasi webhook payment gateway (QRIS & Pakasir).' },
+  { icon: React.createElement(Smartphone, { className: "w-6 h-6" }), title: 'Responsive UI/UX & Web App', desc: 'Slicing antarmuka modern yang ringan, cepat, dan presisi untuk pengguna smartphone maupun desktop dengan Tailwind CSS.' },
+  { icon: React.createElement(Bot, { className: "w-6 h-6" }), title: 'Otomatisasi Bot & Integrasi API', desc: 'Membuat bot notifikasi otomatis WhatsApp, sistem webhook transaksi, dan integrasi API pihak ketiga (reseller / provider).' }
 ];
