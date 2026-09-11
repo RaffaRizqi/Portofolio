@@ -27,6 +27,15 @@ export const PROJECTS = [
     isComingSoon: true
   },
   {
+    title: 'RebaFlix — Aplikasi Nonton Film & Series',
+    description: 'Aplikasi Android untuk streaming film dan series gratis tanpa iklan. Menampilkan konten populer, kategori genre (Horor, Komedi, Thriller, Animasi), fitur Watchlist, pencarian cerdas, dan tampilan sinematik bergaya dark UI premium.',
+    techStack: ['Android (APK)', 'Dark UI/UX', 'RESTful API', 'Katalog Film', 'Watchlist', 'Tanpa Iklan'],
+    category: ['Mobile', 'UI/UX'],
+    image: '/rebaflix-preview.png',
+    link: '#',
+    isComingSoon: true
+  },
+  {
     title: 'Website SMKN 2 Tasikmalaya (Full Stack)',
     description: 'Sistem informasi & portal website resmi sekolah SMKN 2 Tasikmalaya. Dikembangkan full stack dengan React, Vue.js, Laravel REST API, dan database MySQL.',
     techStack: ['React', 'Vue.js', 'Laravel', 'MySQL', 'Full Stack'],

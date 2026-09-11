@@ -71,7 +71,7 @@ export function PortfolioSection() {
               <p className={styles.desc} style={{ marginBottom: 0 }}>Beberapa proyek web yang sudah saya bangun dan aktif di-deploy ke production.</p>
             </div>
             <div className={styles.filters}>
-              {['All', 'Web', 'UI/UX', 'Backend'].map((filter) => (
+              {['All', 'Web', 'Mobile', 'UI/UX', 'Backend'].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
