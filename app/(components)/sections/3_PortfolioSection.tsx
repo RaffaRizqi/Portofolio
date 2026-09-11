@@ -13,7 +13,7 @@ type Project = (typeof PROJECTS)[number];
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const displayProjects = PROJECTS.filter((project) => (project.link && project.link !== '#') || ('isComingSoon' in project && project.isComingSoon));
+  const displayProjects = PROJECTS.filter((project) => (project.link && project.link !== '#') || ('isComingSoon' in project && project.isComingSoon) || ('isDownloadable' in project && project.isDownloadable));
   const featuredProject = PROJECTS.find((project) => project.title === 'RebaSIM OTP Wallet') ?? PROJECTS[0];
   const featuredHighlights = ['Kalkulasi Harga OTP Realtime', 'Supabase Auth & Database', 'Deposit Pakasir Otomatis', 'Responsive HP & Desktop'];
 
@@ -197,7 +197,22 @@ export function PortfolioSection() {
                   <span key={tech}>{tech}</span>
                 ))}
               </div>
-              {'isComingSoon' in selectedProject && selectedProject.isComingSoon ? (
+              {'isDownloadable' in selectedProject && selectedProject.isDownloadable ? (
+                <a
+                  href={selectedProject.link}
+                  download
+                  className={styles.modalAction}
+                  style={{
+                    display: 'block',
+                    textDecoration: 'none',
+                    background: '#86efac',
+                    fontWeight: 900,
+                    textAlign: 'center'
+                  }}
+                >
+                  Download APK Gratis (Android)
+                </a>
+              ) : 'isComingSoon' in selectedProject && selectedProject.isComingSoon ? (
                 <button
                   className={styles.modalAction}
                   disabled

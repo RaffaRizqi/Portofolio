@@ -32,8 +32,8 @@ export const PROJECTS = [
     techStack: ['Android (APK)', 'Dark UI/UX', 'RESTful API', 'Katalog Film', 'Watchlist', 'Tanpa Iklan'],
     category: ['Mobile', 'UI/UX'],
     image: '/rebaflix-preview.png',
-    link: '#',
-    isComingSoon: true
+    link: '/RebaFlix.apk',
+    isDownloadable: true
   },
   {
     title: 'Website SMKN 2 Tasikmalaya (Full Stack)',

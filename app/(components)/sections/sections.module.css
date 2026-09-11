@@ -1225,3 +1225,192 @@
 .footerLinks { display: flex; gap: 1.65rem; }
 .footerLink { color: #121316; font-size: 0.88rem; font-weight: 800; text-decoration: underline; transition: color 0.15s; }
 .footerLink:hover { color: #f59e0b; }
+
+/* =========================================
+   MOBILE RESPONSIVE OVERRIDES (max 640px)
+   ========================================= */
+@media (max-width: 640px) {
+  /* GLOBAL SECTION PADDING */
+  .section {
+    padding: 3.5rem 0;
+    overflow-x: hidden;
+  }
+  .container {
+    padding: 0 1rem;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    padding-top: 5.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .title {
+    font-size: 2rem;
+    letter-spacing: -0.025em;
+    word-break: break-word;
+  }
+  .sectionTitle {
+    font-size: 1.75rem;
+    word-break: break-word;
+  }
+  .heroStats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .heroStatItem {
+    padding: 0.65rem 0.5rem;
+  }
+  .heroStatItem strong {
+    font-size: 1.15rem;
+  }
+  .heroStatItem span {
+    font-size: 0.65rem;
+  }
+  .heroPills {
+    gap: 0.35rem;
+  }
+  .heroPills span {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.55rem;
+  }
+  .btnGroup {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .btnPrimary, .btnSecondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.88rem;
+    padding: 0.8rem 1.2rem;
+  }
+  .grid2 {
+    gap: 2rem;
+  }
+  .gradientText {
+    font-size: inherit;
+    transform: rotate(0deg);
+  }
+
+  /* ABOUT */
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .statItem {
+    padding: 0.75rem 0.5rem;
+  }
+  .statNumber {
+    font-size: 1.2rem;
+  }
+  .statLabel {
+    font-size: 0.65rem;
+  }
+  .profileBox {
+    max-width: 260px;
+    height: 300px;
+    transform: rotate(0deg);
+  }
+
+  /* PORTFOLIO */
+  .portHeader {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .filters {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0.3rem;
+  }
+  .filterBtn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.78rem;
+  }
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .featuredProject {
+    margin-bottom: 2rem;
+  }
+  .featuredInfo {
+    padding: 1.25rem;
+  }
+  .featuredTitle {
+    font-size: 1.35rem;
+  }
+  .featuredList {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .featuredActions {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .featuredPrimary, .featuredSecondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* MODAL */
+  .modalOverlay {
+    padding: 0.75rem;
+    align-items: flex-end;
+  }
+  .modal {
+    max-height: 90vh;
+    border-radius: 10px;
+    overflow-y: auto;
+  }
+  .modalImage {
+    height: 180px !important;
+  }
+  .modalInfo {
+    padding: 1.25rem;
+  }
+  .modalTitle {
+    font-size: 1.2rem;
+  }
+  .modalAction {
+    padding: 0.85rem;
+    font-size: 0.88rem;
+  }
+
+  /* RECRUITER */
+  .recruiterGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .recruiterCard {
+    padding: 1.25rem;
+  }
+
+  /* CONTACT */
+  .contactCta {
+    padding: 1.25rem;
+  }
+  .contactCtaActions {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .contactCtaPrimary,
+  .contactCtaSecondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.88rem;
+    padding: 0.75rem 1rem;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  /* FOOTER */
+  .footerInner {
+    text-align: center;
+  }
+  .footerLinks {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
