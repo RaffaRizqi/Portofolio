@@ -88,6 +88,27 @@
   border-color: #121316;
 }
 
+.navLinkSpecial {
+  color: #121316;
+  font-size: 0.86rem;
+  font-weight: 850;
+  padding: 0.35rem 0.75rem;
+  border-radius: 5px;
+  background: #86efac;
+  border: 1.5px solid #121316;
+  box-shadow: 2px 2px 0px #121316;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.navLinkSpecial:hover {
+  background: #4ade80;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #121316;
+}
+
 /* =========================================
    MOBILE MENU & HAMBURGER
    ========================================= */
@@ -157,4 +178,23 @@
 .mobileLink:hover {
   background: #fde047;
   border-color: #121316;
+}
+
+.mobileLinkSpecial {
+  color: #121316;
+  font-size: 0.95rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: #86efac;
+  border: 2px solid #121316;
+  box-shadow: 2.5px 2.5px 0 #121316;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.mobileLinkSpecial:hover {
+  background: #4ade80;
 }

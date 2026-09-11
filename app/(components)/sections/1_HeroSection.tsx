@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Download, MessageCircle, Globe2 } from 'lucide-react';
+import { ArrowRight, Download, MessageCircle, Globe2, Smartphone } from 'lucide-react';
 import styles from './sections.module.css';
 import { Magnetic } from '../ui/Magnetic';
 import { ParallaxSection } from '../ui/ParallaxSection';
@@ -86,9 +86,16 @@ export function HeroSection() {
     <section className={styles.hero}>
       <div className={`${styles.container} ${styles.grid2}`}>
         <div>
-          <div className={styles.badge}>
-            <span className={styles.dot}></span>
-            <span>Open for Full Stack Developer Jobs &amp; Freelance</span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', marginBottom: '1.25rem', alignItems: 'center' }}>
+            <div className={styles.badge} style={{ marginBottom: 0 }}>
+              <span className={styles.dot}></span>
+              <span>Open for Full Stack Developer Jobs</span>
+            </div>
+            <a href="/rebaflix" className={styles.heroAnnouncementBanner} style={{ marginBottom: 0 }}>
+              <span className={styles.announcementTag}>NEW APK</span>
+              <span>RebaFlix: Nonton Film Gratis</span>
+              <ArrowRight size={14} />
+            </a>
           </div>
           
           <h1 className={styles.title}>
@@ -116,6 +123,11 @@ export function HeroSection() {
             <Magnetic>
               <a href="/cv.html" className={styles.btnPrimary}>
                 <Download size={16} /> Lihat / Download CV
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="/rebaflix" className={styles.btnSecondary} style={{ background: '#86efac', fontWeight: 900 }}>
+                <Smartphone size={16} /> RebaFlix APK
               </a>
             </Magnetic>
             <Magnetic>

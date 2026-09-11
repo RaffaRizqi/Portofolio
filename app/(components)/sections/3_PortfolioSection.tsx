@@ -198,20 +198,36 @@ export function PortfolioSection() {
                 ))}
               </div>
               {'isDownloadable' in selectedProject && selectedProject.isDownloadable ? (
-                <a
-                  href={selectedProject.link}
-                  download
-                  className={styles.modalAction}
-                  style={{
-                    display: 'block',
-                    textDecoration: 'none',
-                    background: '#86efac',
-                    fontWeight: 900,
-                    textAlign: 'center'
-                  }}
-                >
-                  Download APK Gratis (Android)
-                </a>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  <a
+                    href={selectedProject.link}
+                    download="rebaflix.apk"
+                    className={styles.modalAction}
+                    style={{
+                      display: 'block',
+                      textDecoration: 'none',
+                      background: '#86efac',
+                      fontWeight: 900,
+                      textAlign: 'center'
+                    }}
+                  >
+                    Download APK Gratis (rebaflix.apk)
+                  </a>
+                  <a
+                    href="/rebaflix"
+                    className={styles.modalAction}
+                    style={{
+                      display: 'block',
+                      textDecoration: 'none',
+                      background: '#fde047',
+                      color: '#121316',
+                      fontWeight: 900,
+                      textAlign: 'center'
+                    }}
+                  >
+                    Buka Halaman Khusus RebaFlix
+                  </a>
+                </div>
               ) : 'isComingSoon' in selectedProject && selectedProject.isComingSoon ? (
                 <button
                   className={styles.modalAction}

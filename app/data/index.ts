@@ -32,7 +32,7 @@ export const PROJECTS = [
     techStack: ['Android (APK)', 'Dark UI/UX', 'RESTful API', 'Katalog Film', 'Watchlist', 'Tanpa Iklan'],
     category: ['Mobile', 'UI/UX'],
     image: '/rebaflix-preview.png',
-    link: '/RebaFlix.apk',
+    link: '/rebaflix.apk',
     isDownloadable: true
   },
   {

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Smartphone } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { Magnetic } from './Magnetic';
 
@@ -28,6 +28,9 @@ export function Navbar() {
       <div className={styles.navLinks}>
         <a href="#about" className={styles.navLink}>About</a>
         <a href="#portfolio" className={styles.navLink}>Portfolio</a>
+        <a href="/rebaflix" className={styles.navLinkSpecial}>
+          <Smartphone size={14} /> RebaFlix APK
+        </a>
         <a href="#hire" className={styles.navLink}>Hire Me</a>
         <a href="#services" className={styles.navLink}>Services</a>
         <a href="#contact" className={styles.navLink}>Contact</a>
@@ -49,6 +52,9 @@ export function Navbar() {
         <div className={styles.mobileMenu}>
           <a href="#about" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>About</a>
           <a href="#portfolio" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Portfolio</a>
+          <a href="/rebaflix" className={styles.mobileLinkSpecial} onClick={() => setIsMenuOpen(false)}>
+            <Smartphone size={16} /> RebaFlix APK (Download Gratis)
+          </a>
           <a href="#hire" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Hire Me</a>
           <a href="#services" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Services</a>
           <a href="#contact" className={styles.button} onClick={() => setIsMenuOpen(false)} style={{ display: 'flex', justifyContent: 'center' }}>Let&apos;s Talk</a>
