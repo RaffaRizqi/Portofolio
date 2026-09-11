@@ -16,12 +16,24 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
+  async headers() {
     return [
       {
-        source: '/RebaFlix.apk',
-        destination: '/rebaflix.apk',
-        permanent: true,
+        source: '/rebaflix.apk',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/vnd.android.package-archive',
+          },
+          {
+            key: 'Content-Disposition',
+            value: 'attachment; filename="rebaflix.apk"',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
     ];
   },
