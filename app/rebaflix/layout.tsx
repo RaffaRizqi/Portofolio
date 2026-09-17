@@ -1,29 +1,34 @@
 import type { Metadata } from 'next';
 
+const siteUrl = 'https://www.itsraffa.biz.id';
+const pageUrl = `${siteUrl}/rebaflix`;
+
 export const metadata: Metadata = {
-  title: 'Download RebaFlix APK — Nonton Film & Series Gratis Tanpa Iklan | Raffa Rizqi',
-  description: 'Download aplikasi RebaFlix APK untuk smartphone Android. Streaming film box office, drama, dan series lengkap tanpa iklan dengan subtitle Indonesia dan kualitas HD.',
+  title: 'Download RebaFlix APK v1.3.0 untuk Android',
+  description: 'Download RebaFlix v1.3.0 untuk Android melalui halaman resmi. Build release teroptimasi 11.1 MB untuk nonton film dan series subtitle Indonesia.',
   keywords: [
     'RebaFlix',
     'RebaFlix APK',
-    'Download RebaFlix',
-    'rebaflix.apk',
+    'Status RebaFlix',
+    'nonton film gratis',
     'nonton film gratis tanpa iklan',
-    'aplikasi streaming android gratis',
-    'streaming subtitle indonesia',
+    'aplikasi nonton film Android',
+    'aplikasi streaming film Android',
+    'nonton series subtitle Indonesia',
+    'streaming film subtitle Indonesia',
     'Raffa Rizqi Ramdani'
   ],
   alternates: {
-    canonical: 'https://porto.raffzdigital.biz.id/rebaflix',
+    canonical: pageUrl,
   },
   openGraph: {
-    title: 'Download RebaFlix APK — Nonton Film & Series Gratis Tanpa Iklan',
-    description: 'Aplikasi Android streaming film & series gratis tanpa iklan oleh Raffa Rizqi Ramdani. Download langsung file rebaflix.apk!',
-    url: 'https://porto.raffzdigital.biz.id/rebaflix',
+    title: 'Download RebaFlix APK v1.3.0 untuk Android',
+    description: 'RebaFlix v1.3.0 untuk Android kini tersedia dalam build release teroptimasi berukuran 11.1 MB.',
+    url: pageUrl,
     siteName: 'Portofolio Raffa Rizqi Ramdani',
     images: [
       {
-        url: 'https://porto.raffzdigital.biz.id/rebaflix-preview.png',
+        url: `${siteUrl}/rebaflix-preview.png`,
         width: 1200,
         height: 630,
         alt: 'RebaFlix Android App Preview',
@@ -34,10 +39,60 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Download RebaFlix APK — Nonton Film Gratis Tanpa Iklan',
-    description: 'Streaming film & series HD gratis tanpa iklan di Android. Download rebaflix.apk!',
-    images: ['https://porto.raffzdigital.biz.id/rebaflix-preview.png'],
+    title: 'Download RebaFlix APK v1.3.0',
+    description: 'RebaFlix v1.3.0 untuk Android tersedia dalam build release teroptimasi 11.1 MB.',
+    images: [`${siteUrl}/rebaflix-preview.png`],
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${pageUrl}/#app`,
+      name: 'RebaFlix',
+      url: pageUrl,
+      applicationCategory: 'EntertainmentApplication',
+      operatingSystem: 'Android 8.0 or newer',
+      softwareVersion: '1.3.0',
+      description: 'Build release teroptimasi aplikasi Android untuk menonton film dan series dengan subtitle Indonesia.',
+      downloadUrl: `${siteUrl}/rebaflix.apk`,
+      image: `${siteUrl}/rebaflix-preview.png`,
+      author: {
+        '@type': 'Person',
+        name: 'Raffa Rizqi Ramdani',
+        url: siteUrl,
+      },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}/#webpage`,
+      url: pageUrl,
+      name: 'Download RebaFlix APK untuk Android',
+      description: 'Halaman resmi download RebaFlix v1.3.0 untuk Android.',
+      inLanguage: 'id-ID',
+      mainEntity: { '@id': `${pageUrl}/#app` },
+      isPartOf: { '@id': `${siteUrl}/#website` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Portofolio Raffa Rizqi',
+          item: siteUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'RebaFlix',
+          item: pageUrl,
+        },
+      ],
+    },
+  ],
 };
 
 export default function RebaFlixLayout({
@@ -45,5 +100,13 @@ export default function RebaFlixLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

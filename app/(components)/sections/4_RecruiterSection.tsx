@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowUpRight, BookOpenCheck, BriefcaseBusiness, CheckCircle2, Download, Github, Languages, MessageCircle, Rocket, Smartphone, Workflow } from 'lucide-react';
+import { ArrowUpRight, BookOpenCheck, BriefcaseBusiness, CheckCircle2, Download, Languages, MessageCircle, Rocket, Smartphone, Workflow } from 'lucide-react';
 import styles from './sections.module.css';
 import { Reveal } from '../ui/Reveal';
 import { TextReveal } from '../ui/TextReveal';

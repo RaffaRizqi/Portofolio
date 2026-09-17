@@ -7,7 +7,7 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
-const siteUrl = 'https://porto.raffzdigital.biz.id'
+const siteUrl = 'https://www.itsraffa.biz.id'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -17,8 +17,8 @@ const jsonLd = {
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
       name: 'Raffa Rizqi Ramdani | Full Stack Developer Portfolio',
-      description: 'Official portfolio of Raffa Rizqi Ramdani — Full Stack Web Developer specializing in React, Next.js 14, Vue, Laravel, TypeScript, MySQL, Supabase, and REST API.',
-      inLanguage: ['id-ID', 'en-US', 'zh-Hans'],
+      description: 'Portofolio resmi Raffa Rizqi Ramdani, Full Stack Developer dari Tasikmalaya yang membangun aplikasi web dengan Next.js, React, Laravel, TypeScript, dan Supabase.',
+      inLanguage: 'id-ID',
       publisher: {
         '@id': `${siteUrl}/#person`,
       },
@@ -139,6 +139,18 @@ const jsonLd = {
           operatingSystem: 'Web',
           description: 'Full stack school management & information system built with React, Vue.js, Laravel REST API, and MySQL.',
         },
+        {
+          '@type': 'SoftwareApplication',
+          position: 5,
+          name: 'RebaFlix',
+          applicationCategory: 'EntertainmentApplication',
+          operatingSystem: 'Android 8.0 or newer',
+          url: `${siteUrl}/rebaflix`,
+          softwareVersion: '1.3.0',
+          description: 'Aplikasi Android untuk menonton film dan serial. Build release teroptimasi v1.3.0 tersedia melalui halaman resmi.',
+          downloadUrl: `${siteUrl}/rebaflix.apk`,
+          author: { '@id': `${siteUrl}/#person` },
+        },
       ],
     },
   ],
@@ -150,10 +162,12 @@ export const metadata: Metadata = {
     default: 'Raffa Rizqi - Full Stack Developer | Next.js, React, Laravel & Supabase',
     template: '%s | Raffa Rizqi - Full Stack Developer',
   },
-  description: 'Portofolio resmi Raffa Rizqi Ramdani — Full Stack Web Developer dari Tasikmalaya yang ahli membangun web app responsif, dashboard interaktif, sistem database, integrasi API, React, Next.js, Vue, Laravel, MySQL, Supabase, dan memiliki kemahiran Bahasa Mandarin HSK 5.',
+  description: 'Portofolio resmi Raffa Rizqi Ramdani, Full Stack Developer dari Tasikmalaya. Lihat proyek Next.js, React, Laravel, TypeScript, Supabase, RebaFlix, dan aplikasi web production-ready.',
   keywords: [
     'Raffa Rizqi',
     'Raffa Rizqi Ramdani',
+    'Raffa developer',
+    'Raffa Rizqi portfolio',
     'Full Stack Developer',
     'Full Stack Developer Indonesia',
     'Full Stack Web Developer Tasikmalaya',
@@ -162,13 +176,10 @@ export const metadata: Metadata = {
     'Next.js 14 Developer',
     'React Developer Indonesia',
     'Laravel Developer Indonesia',
-    'Vue.js Developer',
     'Supabase Developer',
-    'TypeScript Developer',
-    'Mandarin Speaker Developer',
-    'Developer Bahasa Mandarin HSK 5',
     'RebaMedia',
     'RebaSIM',
+    'RebaFlix',
     'RaffaStore',
     'Jasa Pembuatan Website Tasikmalaya',
     'Portofolio Full Stack Developer',
@@ -179,10 +190,6 @@ export const metadata: Metadata = {
   category: 'technology',
   alternates: {
     canonical: '/',
-    languages: {
-      'id-ID': '/',
-      'en-US': '/',
-    },
   },
   robots: {
     index: true,
@@ -206,12 +213,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Raffa Rizqi - Full Stack Developer | Next.js, React, Laravel & Supabase',
-    description: 'Portofolio resmi Raffa Rizqi Ramdani — Full Stack Web Developer. Siap membangun web app modern, responsive HP, integrasi payment & database, dan menguasai Bahasa Mandarin HSK 5.',
+    description: 'Portofolio resmi Raffa Rizqi Ramdani, Full Stack Developer dari Tasikmalaya. Lihat proyek web, mobile, backend, database, dan integrasi API.',
     url: siteUrl,
     siteName: 'Raffa Rizqi - Full Stack Developer Portfolio',
     images: [
       {
-        url: '/rebasim-preview.png',
+        url: '/porto-preview.png',
         width: 1200,
         height: 630,
         alt: 'Raffa Rizqi Ramdani - Full Stack Developer Portfolio Preview',
@@ -228,7 +235,7 @@ export const metadata: Metadata = {
     description: 'Full Stack Web Developer: Next.js 14, React, Vue, Laravel, TypeScript, MySQL, Supabase, dan Mandarin HSK 5.',
     creator: '@RaffaRizqi02',
     site: '@RaffaRizqi02',
-    images: ['/rebasim-preview.png'],
+    images: ['/porto-preview.png'],
   },
   other: {
     'geo.region': 'ID-JB',
@@ -245,9 +252,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={inter.variable}>
-      <head>
-        <link rel="canonical" href={siteUrl} />
-      </head>
       <body>
         <script
           type="application/ld+json"

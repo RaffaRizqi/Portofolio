@@ -14,6 +14,17 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [isMenuOpen]);
+
   return (
     <nav
       className={styles.navbar}
@@ -29,7 +40,7 @@ export function Navbar() {
         <a href="#about" className={styles.navLink}>About</a>
         <a href="#portfolio" className={styles.navLink}>Portfolio</a>
         <a href="/rebaflix" className={styles.navLinkSpecial}>
-          <Smartphone size={14} /> RebaFlix APK
+          <Smartphone size={14} /> RebaFlix
         </a>
         <a href="#hire" className={styles.navLink}>Hire Me</a>
         <a href="#services" className={styles.navLink}>Services</a>
@@ -42,18 +53,24 @@ export function Navbar() {
             <a href="#contact" className={styles.button}>Let&apos;s Talk</a>
           </Magnetic>
         </div>
-        <button className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+        <button
+          className={styles.hamburger}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+        >
           {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className={styles.mobileMenu}>
+        <div id="mobile-navigation" className={styles.mobileMenu}>
           <a href="#about" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>About</a>
           <a href="#portfolio" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Portfolio</a>
           <a href="/rebaflix" className={styles.mobileLinkSpecial} onClick={() => setIsMenuOpen(false)}>
-            <Smartphone size={16} /> RebaFlix APK (Download Gratis)
+            <Smartphone size={16} /> RebaFlix (Download APK)
           </a>
           <a href="#hire" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Hire Me</a>
           <a href="#services" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Services</a>

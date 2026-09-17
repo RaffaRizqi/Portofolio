@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /rebaflix/analytics
 
-Sitemap: https://porto.raffzdigital.biz.id/sitemap.xml
+Sitemap: https://www.itsraffa.biz.id/sitemap.xml

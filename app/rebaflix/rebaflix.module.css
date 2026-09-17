@@ -15,13 +15,8 @@
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 2rem;
-  }
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  min-width: 0;
 }
 
 /* ----------------- Top Header ----------------- */
@@ -40,6 +35,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  min-width: 0;
 }
 
 .backLink {
@@ -160,7 +156,7 @@
 }
 
 .heroTitle {
-  font-size: 2.15rem;
+  font-size: clamp(2rem, 7.5vw, 3.4rem);
   line-height: 1.12;
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -168,20 +164,8 @@
   color: #121316;
 }
 
-@media (min-width: 640px) {
-  .heroTitle {
-    font-size: 2.85rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .heroTitle {
-    font-size: 3.4rem;
-  }
-}
-
 .titleHighlight {
-  background: linear-gradient(120deg, #fde047 0%, #86efac 100%);
+  background: #fde047;
   padding: 0 0.3rem;
   border: 2px solid #121316;
   border-radius: 4px;
@@ -194,75 +178,128 @@
   line-height: 1.6;
   color: #374151;
   font-weight: 600;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
-/* Link Box */
-.linkCard {
-  background: #ffffff;
-  border: 2.5px solid #121316;
-  border-radius: 8px;
-  padding: 0.85rem 1rem;
-  box-shadow: 3.5px 3.5px 0 #121316;
-  margin-bottom: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-@media (min-width: 540px) {
-  .linkCard {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-.linkLabel {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: #6b7280;
-  letter-spacing: 0.05em;
-}
-
-.linkUrlText {
-  font-size: 0.92rem;
-  font-weight: 800;
-  color: #121316;
-  font-family: monospace;
-  word-break: break-all;
-}
-
-.copyBtn {
+.releaseNotice {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  font-size: 0.78rem;
-  font-weight: 850;
-  padding: 0.45rem 0.85rem;
-  background: #f3f4f6;
+  gap: 0.75rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 1.25rem;
+  padding: 0.8rem 1rem;
   color: #121316;
+  background: #dcfce7;
   border: 2px solid #121316;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 2px 2px 0 #121316;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-  align-self: flex-start;
-}
-
-@media (min-width: 540px) {
-  .copyBtn {
-    align-self: center;
-  }
-}
-
-.copyBtn:hover {
-  background: #fde047;
-  transform: translate(-1px, -1px);
+  border-radius: 8px;
   box-shadow: 3px 3px 0 #121316;
+}
+
+.releaseNotice div {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.releaseNotice strong {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.releaseNotice span {
+  color: #374151;
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.countdownPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1.1fr);
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  color: #121316;
+  background: #93c5fd;
+  border: 2.5px solid #121316;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 #121316;
+}
+
+.countdownIntro {
+  min-width: 0;
+}
+
+.countdownEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.countdownIntro strong {
+  display: block;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.countdownIntro p {
+  margin-top: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 750;
+  color: #26374f;
+}
+
+.countdownClock {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.countdownUnit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 0.65rem 0.35rem 0.55rem;
+  background: #f8f6f0;
+  border: 2px solid #121316;
+  border-radius: 7px;
+}
+
+.countdownUnit span {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.countdownUnit small {
+  margin-top: 0.25rem;
+  font-size: 0.61rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.countdownUnit b {
+  position: absolute;
+  right: -0.49rem;
+  top: 50%;
+  z-index: 1;
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: translateY(-50%);
 }
 
 /* CTA Group */
@@ -344,7 +381,7 @@
 .mockupImageContainer {
   position: relative;
   width: 100%;
-  height: 460px;
+  height: clamp(22rem, 112vw, 28.75rem);
   border-radius: 10px;
   overflow: hidden;
   border: 2.5px solid #121316;
@@ -411,6 +448,142 @@
   font-size: 1.15rem;
   font-weight: 900;
   color: #121316;
+}
+
+/* ----------------- Public Realtime Stats ----------------- */
+.publicStatsSection {
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  background: #ffffff;
+  border-block: 2.5px solid #121316;
+  margin: 2rem 0 0;
+}
+
+.publicStatsHeading {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.liveEyebrow {
+  width: fit-content;
+  margin: 0 auto 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.75rem;
+  border: 2px solid #121316;
+  border-radius: 999px;
+  background: #ecfccb;
+  box-shadow: 2px 2px 0 #121316;
+  color: #121316;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.liveDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.35);
+  animation: livePulse 2s ease-out infinite;
+}
+
+.publicStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 2.5px solid #121316;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #121316;
+  gap: 2px;
+  box-shadow: 6px 6px 0 #121316;
+}
+
+.publicStatCard {
+  min-width: 0;
+  background: #f8f6f0;
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+}
+
+.publicStatIcon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.35rem;
+  border: 2px solid #121316;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 #121316;
+}
+
+.publicStatIcon_yellow {
+  background: #fde047;
+}
+
+.publicStatIcon_green {
+  background: #86efac;
+}
+
+.publicStatIcon_blue {
+  background: #93c5fd;
+}
+
+.publicStatIcon_pink {
+  background: #fbcfe8;
+}
+
+.publicStatLabel {
+  margin-bottom: 0.35rem;
+  color: #4b5563;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.publicStatValue {
+  min-height: 1.15em;
+  color: #121316;
+  font-size: clamp(1.6rem, 4vw, 2.45rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.publicStatDetail {
+  margin-top: 0.65rem;
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.publicStatsError {
+  margin: 1.25rem auto 0;
+  color: #9f1239;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+@media (min-width: 820px) {
+  .publicStatsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@keyframes livePulse {
+  70% {
+    box-shadow: 0 0 0 0.45rem rgba(22, 163, 74, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
 }
 
 /* ----------------- Features ----------------- */
@@ -557,6 +730,10 @@
   line-height: 1.5;
 }
 
+.stepContent {
+  min-width: 0;
+}
+
 /* ----------------- FAQ ----------------- */
 .faqSection {
   padding: 3rem 0;
@@ -649,6 +826,35 @@
   box-shadow: 5px 5px 0 #ffffff;
 }
 
+.headerDownloadBtn.releasePaused,
+.btnDownloadMain.releasePaused,
+.bottomBtnDownload.releasePaused {
+  background: #fbcfe8;
+  color: #121316;
+  cursor: not-allowed;
+}
+
+.headerDownloadBtn.releasePaused:hover,
+.btnDownloadMain.releasePaused:hover,
+.btnDownloadMain.releasePaused:active,
+.bottomBtnDownload.releasePaused:hover {
+  background: #fbcfe8;
+  transform: none;
+}
+
+.headerDownloadBtn.releasePaused:hover {
+  box-shadow: 2.5px 2.5px 0 #121316;
+}
+
+.btnDownloadMain.releasePaused:hover,
+.btnDownloadMain.releasePaused:active {
+  box-shadow: 4px 4px 0 #121316;
+}
+
+.bottomBtnDownload.releasePaused:hover {
+  box-shadow: 3.5px 3.5px 0 #ffffff;
+}
+
 .bottomBtnBack {
   display: inline-flex;
   align-items: center;
@@ -681,4 +887,142 @@
   font-size: 0.88rem;
   font-weight: 700;
   color: #6b7280;
+}
+
+@media (max-width: 560px) {
+  .header {
+    padding: 0.65rem 0;
+  }
+
+  .headerInner {
+    gap: 0.5rem;
+  }
+
+  .backLink,
+  .headerDownloadBtn {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .backLink span,
+  .headerDownloadBtn span {
+    display: none;
+  }
+
+  .brandBadge {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding-top: 2.5rem;
+  }
+
+  .heroBadges > * {
+    flex: 1 1 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .heroDesc,
+  .sectionSubtitle {
+    font-size: 0.94rem;
+  }
+
+  .countdownPanel {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 0.85rem;
+  }
+
+  .countdownIntro {
+    text-align: center;
+  }
+
+  .countdownEyebrow {
+    justify-content: center;
+  }
+
+  .ctaGroup,
+  .bottomBtnGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnDownloadMain,
+  .btnGuide,
+  .bottomBtnDownload,
+  .bottomBtnBack {
+    width: 100%;
+    min-height: 2.75rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .btnDownloadMain {
+    font-size: 0.94rem;
+    padding-inline: 1rem;
+  }
+
+  .mockupCard {
+    padding: 0.75rem;
+    box-shadow: 5px 5px 0 #121316;
+  }
+
+  .mockupBadgeFloating {
+    right: -0.35rem;
+  }
+
+  .specsGrid {
+    gap: 0.75rem;
+  }
+
+  .specCard {
+    padding: 1rem 0.85rem;
+  }
+
+  .specValue {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  .featuresSection,
+  .guideSection,
+  .faqSection {
+    padding: 2.5rem 0;
+  }
+
+  .stepItem {
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .bottomBanner {
+    padding: 2rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .bottomBanner h3 {
+    font-size: 1.55rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .specsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mockupBadgeFloating {
+    position: static;
+    margin-top: 0.75rem;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
 }

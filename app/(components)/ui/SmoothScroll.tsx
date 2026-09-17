@@ -6,6 +6,9 @@ export function SmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    const shouldUseNativeScroll = window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches;
+    if (shouldUseNativeScroll) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

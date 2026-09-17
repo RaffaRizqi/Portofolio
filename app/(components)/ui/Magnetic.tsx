@@ -18,12 +18,16 @@ export function Magnetic({ children }: { children: React.ReactElement }) {
 
   const reset = () => { setPosition({ x: 0, y: 0 }); };
 
-  return React.cloneElement(children, {
+  const magneticChild = children as React.ReactElement<
+    React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>
+  >;
+
+  return React.cloneElement(magneticChild, {
     ref,
     onMouseMove: handleMouse,
     onMouseLeave: reset,
     style: {
-      ...(children.props.style || {}),
+      ...(magneticChild.props.style || {}),
       transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
       transition: position.x === 0 && position.y === 0 ? 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
       willChange: 'transform'

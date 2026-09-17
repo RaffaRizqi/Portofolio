@@ -21,6 +21,10 @@ export function ScrollVelocityText({
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    const element = containerRef.current;
+    const shouldDisableMotion = window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches;
+    if (!element?.offsetParent || shouldDisableMotion) return;
+
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       const diff = currentScroll - lastScrollRef.current;

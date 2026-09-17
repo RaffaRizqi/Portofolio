@@ -19,6 +19,9 @@ export function ParallaxSection({
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
+    const shouldDisableParallax = window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches;
+    if (shouldDisableParallax) return;
+
     let ticking = false;
 
     const handleScroll = () => {

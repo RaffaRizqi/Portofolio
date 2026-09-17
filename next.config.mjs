@@ -27,13 +27,49 @@ const nextConfig = {
           },
           {
             key: 'Content-Disposition',
-            value: 'attachment; filename="rebaflix.apk"',
+            value: 'attachment; filename="rebaflix-v1.3.0.apk"',
           },
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=0, must-revalidate',
           },
         ],
+      },
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'porto.raffzdigital.biz.id',
+          },
+        ],
+        destination: 'https://www.itsraffa.biz.id/:path*',
+        permanent: true,
       },
     ];
   },

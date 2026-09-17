@@ -13,7 +13,7 @@ type Project = (typeof PROJECTS)[number];
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const displayProjects = PROJECTS.filter((project) => (project.link && project.link !== '#') || ('isComingSoon' in project && project.isComingSoon) || ('isDownloadable' in project && project.isDownloadable));
+  const displayProjects = PROJECTS.filter((project) => (project.link && project.link !== '#') || ('isComingSoon' in project && project.isComingSoon));
   const featuredProject = PROJECTS.find((project) => project.title === 'RebaSIM OTP Wallet') ?? PROJECTS[0];
   const featuredHighlights = ['Kalkulasi Harga OTP Realtime', 'Supabase Auth & Database', 'Deposit Pakasir Otomatis', 'Responsive HP & Desktop'];
 
@@ -22,14 +22,19 @@ export function PortfolioSection() {
     : displayProjects.filter((project) => project.category.includes(activeFilter));
 
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    if (!selectedProject) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedProject(null);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', closeOnEscape);
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
     };
   }, [selectedProject]);
 
@@ -137,6 +142,15 @@ export function PortfolioSection() {
                 onClick={() => setSelectedProject(project)}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedProject(project);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-haspopup="dialog"
               >
                 <div className={styles.cardImgBox}>
                   <div className={styles.cardOverlay}></div>
@@ -176,10 +190,16 @@ export function PortfolioSection() {
 
       {selectedProject && (
         <div className={styles.modalOverlay} onClick={() => setSelectedProject(null)}>
-          <button className={styles.closeModalBtn} onClick={() => setSelectedProject(null)} aria-label="Close project preview">
-            <X size={24} />
-          </button>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-dialog-title"
+          >
+            <button className={styles.closeModalBtn} onClick={() => setSelectedProject(null)} aria-label="Tutup detail proyek">
+              <X size={24} />
+            </button>
             <div className={styles.modalImgBox}>
               <Image
                 src={selectedProject.image}
@@ -190,29 +210,26 @@ export function PortfolioSection() {
               />
             </div>
             <div className={styles.modalInfo}>
-              <h3 className={styles.modalTitle}>{selectedProject.title}</h3>
+              <h3 id="project-dialog-title" className={styles.modalTitle}>{selectedProject.title}</h3>
               <p className={styles.modalDesc}>{selectedProject.description}</p>
               <div className={styles.modalMeta}>
                 {selectedProject.techStack.map((tech) => (
                   <span key={tech}>{tech}</span>
                 ))}
               </div>
-              {'isDownloadable' in selectedProject && selectedProject.isDownloadable ? (
+              {'isReleasePaused' in selectedProject && selectedProject.isReleasePaused ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                  <a
-                    href={selectedProject.link}
-                    download="rebaflix.apk"
+                  <div
                     className={styles.modalAction}
                     style={{
-                      display: 'block',
-                      textDecoration: 'none',
-                      background: '#86efac',
+                      background: '#fbcfe8',
+                      color: '#121316',
                       fontWeight: 900,
                       textAlign: 'center'
                     }}
                   >
-                    Download APK Gratis (rebaflix.apk)
-                  </a>
+                    Distribusi APK sedang ditinjau
+                  </div>
                   <a
                     href="/rebaflix"
                     className={styles.modalAction}
@@ -225,7 +242,7 @@ export function PortfolioSection() {
                       textAlign: 'center'
                     }}
                   >
-                    Buka Halaman Khusus RebaFlix
+                    Lihat Status Rilis RebaFlix
                   </a>
                 </div>
               ) : 'isComingSoon' in selectedProject && selectedProject.isComingSoon ? (

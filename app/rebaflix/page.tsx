@@ -1,51 +1,35 @@
-'use client';
-
-import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Download,
   ArrowLeft,
   Smartphone,
   ShieldCheck,
   Film,
   Tv,
-  Sparkles,
   Zap,
-  FolderDown,
-  CheckCircle2,
-  Copy,
-  Check,
   Layers,
-  Clock,
-  EyeOff
+  CircleCheck,
+  EyeOff,
+  Download
 } from 'lucide-react';
 import styles from './rebaflix.module.css';
+import { PublicDownloadStats } from './PublicDownloadStats';
+import { TrackedDownloadLink } from './TrackedDownloadLink';
 
 export default function RebaFlixPage() {
-  const [copied, setCopied] = useState(false);
-
-  const directDownloadUrl = 'https://porto.raffzdigital.biz.id/rebaflix.apk';
-
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(directDownloadUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2200);
-  };
-
   const appSpecs = [
-    { label: 'Nama File', value: 'rebaflix.apk' },
-    { label: 'Ukuran APK', value: '30.6 MB' },
-    { label: 'Kompatibilitas', value: 'Android 7.0+' },
-    { label: 'Iklan', value: '0 (Tanpa Iklan)' }
+    { label: 'Status Distribusi', value: 'v1.3.0 Tersedia' },
+    { label: 'Versi Terbaru', value: '1.3.0 (Code 5)' },
+    { label: 'Kompatibilitas', value: 'Android 8.0+' },
+    { label: 'Build', value: 'R8 · Non-debuggable' }
   ];
 
   const features = [
     {
       icon: <EyeOff size={22} color="#121316" />,
       bg: '#fde047',
-      title: '100% Tanpa Iklan',
-      desc: 'Tidak ada iklan video pop-up atau banner yang mengganggu kenyamanan streaming dari awal hingga film selesai.'
+      title: 'Pengalaman Menonton Bersih',
+      desc: 'Antarmuka dirancang agar fokus tetap berada pada film dan serial, tanpa elemen promosi yang menutupi pemutar.'
     },
     {
       icon: <Film size={22} color="#121316" />,
@@ -56,14 +40,14 @@ export default function RebaFlixPage() {
     {
       icon: <Zap size={22} color="#121316" />,
       bg: '#93c5fd',
-      title: 'Server Cepat & HD Jernih',
-      desc: 'Streaming lancar resolusi tinggi 720p & 1080p dengan server responsif, buffering minim walau di jaringan seluler.'
+      title: 'Pemutar Video Adaptif',
+      desc: 'Pemutar mendukung beberapa pilihan kualitas video dan kontrol playback untuk menyesuaikan kondisi jaringan.'
     },
     {
       icon: <Tv size={22} color="#121316" />,
       bg: '#fca5a5',
-      title: 'Subtitle Indonesia Lengkap',
-      desc: 'Dilengkapi takarir bahasa Indonesia yang akurat, sinkron, dan mudah dibaca langsung dari pemutar bawaan.'
+      title: 'Dukungan Subtitle Indonesia',
+      desc: 'Tampilan pemutar dirancang untuk menampilkan takarir bahasa Indonesia yang mudah dibaca.'
     },
     {
       icon: <Layers size={22} color="#121316" />,
@@ -74,42 +58,42 @@ export default function RebaFlixPage() {
     {
       icon: <ShieldCheck size={22} color="#121316" />,
       bg: '#c4b5fd',
-      title: 'Ringan & Aman di HP',
-      desc: 'File APK berukuran ramping 30 MB, hemat RAM dan tidak menguras daya baterai smartphone Android Anda.'
+      title: 'Build Android Transparan',
+      desc: 'Versi 1.3.0 berukuran 11.1 MB, sudah dioptimasi dengan R8, dan non-debuggable. Detail signature serta izin aplikasi ditampilkan terbuka.'
     }
   ];
 
-  const installSteps = [
+  const releaseChecks = [
     {
-      title: 'Download File APK',
-      desc: 'Klik tombol Download di halaman ini untuk mengunduh file resmi rebaflix.apk ke smartphone Android Anda.'
+      title: 'Production signing',
+      desc: 'APK harus ditandatangani dengan release key yang terlindungi, bukan sertifikat Android Debug.'
     },
     {
-      title: 'Buka File yang Diunduh',
-      desc: 'Tarik bar notifikasi atas atau buka aplikasi File Manager pada folder Download, lalu ketuk file rebaflix.apk.'
+      title: 'Non-debuggable build — terpenuhi',
+      desc: 'Konfigurasi debug sudah dinonaktifkan pada artifact v1.3.0 yang tersedia saat ini.'
     },
     {
-      title: 'Izinkan Instalasi Sumber Tidak Dikenal',
-      desc: 'Bila muncul jendela keamanan Android, pilih Pengaturan lalu aktifkan opsi "Izinkan dari sumber ini" (Install Unknown Apps).'
+      title: 'Permission review',
+      desc: 'Izin sensitif yang tidak dibutuhkan, termasuk kemampuan memasang paket lain, harus dihapus dari manifest.'
     },
     {
-      title: 'Tekan Pasang & Buka Aplikasi',
-      desc: 'Tekan tombol Instal, tunggu hitungan detik hingga selesai, dan nikmati streaming film gratis sepuasnya tanpa iklan!'
+      title: 'Artifact yang tersedia',
+      desc: 'Versi 1.3.0 (code 5), Android 8.0+, ukuran 11.1 MB, dan SHA-256 D6CFC5CF…699AB338.'
     }
   ];
 
   const faqs = [
     {
-      q: 'Apakah RebaFlix memerlukan akun atau biaya langganan?',
-      a: 'Tidak. RebaFlix dapat langsung digunakan 100% gratis tanpa perlu registrasi akun atau biaya langganan bulanan.'
+      q: 'Build apa yang tersedia untuk diunduh?',
+      a: 'RebaFlix v1.3.0 (versionCode 5), build release teroptimasi berukuran 11.1 MB dan non-debuggable.'
     },
     {
-      q: 'Kenapa aplikasi ini berbentuk APK dan tidak di Play Store?',
-      a: 'RebaFlix didistribusikan secara mandiri oleh pengembang (Raffa Rizqi) langsung dalam format paket instalasi Android (.apk) agar pengguna dapat langsung mengunduh versi rilis publik tanpa batasan pihak ketiga.'
+      q: 'Apakah ini sudah menjadi rilis production?',
+      a: 'Belum sepenuhnya. APK masih ditandatangani dengan sertifikat Android Debug, sehingga belum dapat disebut production-signed.'
     },
     {
-      q: 'Apakah aman dipasang di HP Android?',
-      a: 'Ya, file rebaflix.apk bersih dari script berbahaya, virus, maupun iklan jebakan pihak ketiga.'
+      q: 'Apa yang perlu diperhatikan sebelum instalasi?',
+      a: 'Unduh hanya dari halaman resmi ini. Android dapat menampilkan peringatan karena APK dipasang dari luar Play Store. Artifact juga masih meminta izin REQUEST_INSTALL_PACKAGES.'
     }
   ];
 
@@ -126,10 +110,10 @@ export default function RebaFlixPage() {
             <span>REBAFLIX</span>
             <span style={{ color: '#e11d48' }}>.</span>
           </div>
-          <a href="/rebaflix.apk" download="rebaflix.apk" className={styles.headerDownloadBtn}>
+          <TrackedDownloadLink source="header" className={styles.headerDownloadBtn}>
             <Download size={15} />
             <span>Download APK</span>
-          </a>
+          </TrackedDownloadLink>
         </div>
       </header>
 
@@ -143,51 +127,35 @@ export default function RebaFlixPage() {
                   <Smartphone size={14} /> Android App
                 </span>
                 <span className={styles.badgeFree}>
-                  <Sparkles size={14} /> 100% Gratis Tanpa Iklan
+                  <ShieldCheck size={14} /> Release Build v1.3.0
                 </span>
               </div>
 
               <h1 className={styles.heroTitle}>
-                Nonton Film &amp; Series <span className={styles.titleHighlight}>Gratis Tanpa Iklan</span> di Android.
+                RebaFlix untuk Android. <span className={styles.titleHighlight}>Versi 1.3.0 Sudah Tersedia.</span>
               </h1>
 
               <p className={styles.heroDesc}>
-                <strong>RebaFlix</strong> adalah aplikasi mobile streaming Android untuk nonton ribuan film box office, serial TV, drama, dan anime berkualitas HD jernih dengan takarir bahasa Indonesia lengkap, tanpa interupsi iklan yang mengganggu.
+                <strong>RebaFlix</strong> adalah aplikasi Android untuk menonton film dan series dengan subtitle Indonesia. Versi terbaru kini lebih ringan, non-debuggable, dan dioptimasi dengan R8.
               </p>
 
-              {/* Direct Download Link Box */}
-              <div className={styles.linkCard}>
+              <div className={styles.releaseNotice} role="status">
+                <CircleCheck size={19} aria-hidden="true" />
                 <div>
-                  <div className={styles.linkLabel}>Link Download Langsung (Direct URL)</div>
-                  <div className={styles.linkUrlText}>{directDownloadUrl}</div>
+                  <strong>Update v1.3.0 siap diunduh</strong>
+                  <span>11.1 MB · Android 8.0+ · versionCode 5</span>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleCopyLink}
-                  className={styles.copyBtn}
-                  aria-label="Salin link download"
-                >
-                  {copied ? (
-                    <>
-                      <Check size={14} color="#16a34a" /> Tersalin!
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={14} /> Salin Link
-                    </>
-                  )}
-                </button>
               </div>
 
               {/* Download CTA Group */}
               <div className={styles.ctaGroup}>
-                <a href="/rebaflix.apk" download="rebaflix.apk" className={styles.btnDownloadMain}>
+                <TrackedDownloadLink source="hero" className={styles.btnDownloadMain}>
                   <Download size={20} />
-                  <span>Download rebaflix.apk (30.6 MB)</span>
-                </a>
-                <a href="#panduan" className={styles.btnGuide}>
-                  <FolderDown size={17} />
-                  <span>Panduan Pasang</span>
+                  <span>Download APK v1.3.0 (11.1 MB)</span>
+                </TrackedDownloadLink>
+                <a href="#status-rilis" className={styles.btnGuide}>
+                  <ShieldCheck size={17} />
+                  <span>Baca Catatan Instalasi</span>
                 </a>
               </div>
             </div>
@@ -206,8 +174,8 @@ export default function RebaFlixPage() {
                   />
                 </div>
                 <div className={styles.mockupBadgeFloating}>
-                  <CheckCircle2 size={16} color="#121316" />
-                  <span>v1.0.0 Publik Rilis</span>
+                  <CircleCheck size={16} color="#121316" />
+                  <span>v1.3.0 · 11.1 MB</span>
                 </div>
               </div>
             </div>
@@ -229,12 +197,14 @@ export default function RebaFlixPage() {
         </div>
       </section>
 
+      <PublicDownloadStats />
+
       {/* Key Features Section */}
       <section className={styles.featuresSection}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Keunggulan Utama RebaFlix</h2>
+          <h2 className={styles.sectionTitle}>Rancangan Produk RebaFlix</h2>
           <p className={styles.sectionSubtitle}>
-            Dibangun dengan fokus pada pengalaman menonton yang nyaman, bersih dari iklan, dan lancar di berbagai perangkat Android.
+            Fitur utama dalam build RebaFlix v1.3.0 untuk pengalaman menonton di perangkat Android.
           </p>
 
           <div className={styles.featuresGrid}>
@@ -251,16 +221,16 @@ export default function RebaFlixPage() {
         </div>
       </section>
 
-      {/* Installation Guide Section */}
-      <section id="panduan" className={styles.guideSection}>
+      {/* Release Review Section */}
+      <section id="status-rilis" className={styles.guideSection}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Cara Pasang APK di HP Android</h2>
+          <h2 className={styles.sectionTitle}>Catatan Sebelum Menginstal</h2>
           <p className={styles.sectionSubtitle}>
-            Ikuti 4 langkah mudah berikut untuk menginstal file rebaflix.apk secara mandiri.
+            Build release teroptimasi sudah dapat diunduh. Detail berikut menjelaskan apa yang sudah terpenuhi dan apa yang masih perlu ditingkatkan.
           </p>
 
           <div className={styles.stepsList}>
-            {installSteps.map((step, idx) => (
+            {releaseChecks.map((step, idx) => (
               <div key={step.title} className={styles.stepItem}>
                 <div className={styles.stepNum}>{idx + 1}</div>
                 <div className={styles.stepContent}>
@@ -278,7 +248,7 @@ export default function RebaFlixPage() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Pertanyaan yang Sering Diajukan</h2>
           <p className={styles.sectionSubtitle}>
-            Informasi lengkap seputar ketersediaan dan keamanan aplikasi RebaFlix.
+            Informasi transparan tentang status distribusi aplikasi RebaFlix.
           </p>
 
           <div className={styles.faqGrid}>
@@ -295,15 +265,15 @@ export default function RebaFlixPage() {
       {/* Bottom CTA Banner */}
       <div className={styles.container}>
         <div className={styles.bottomBanner}>
-          <h3>Mulai Nonton Film Favoritmu Sekarang</h3>
+          <h3>RebaFlix v1.3.0 Sudah Tersedia</h3>
           <p>
-            Unduh RebaFlix sekarang juga dan rasakan sensasi streaming tanpa gangguan iklan, gratis selamanya di Android kamu.
+            Download build terbaru yang lebih ringan melalui halaman resmi ini. Periksa catatan instalasi sebelum memasang APK.
           </p>
           <div className={styles.bottomBtnGroup}>
-            <a href="/rebaflix.apk" download="rebaflix.apk" className={styles.bottomBtnDownload}>
+            <TrackedDownloadLink source="bottom" className={styles.bottomBtnDownload}>
               <Download size={18} />
-              <span>Download rebaflix.apk</span>
-            </a>
+              <span>Download APK v1.3.0</span>
+            </TrackedDownloadLink>
             <Link href="/" className={styles.bottomBtnBack}>
               <ArrowLeft size={16} />
               <span>Kembali ke Portofolio</span>
@@ -317,9 +287,6 @@ export default function RebaFlixPage() {
         <div className={styles.container}>
           <p>
             RebaFlix &bull; Dikembangkan oleh <strong>Raffa Rizqi Ramdani</strong> (Full Stack &amp; Mobile Developer)
-          </p>
-          <p style={{ marginTop: '0.35rem', fontSize: '0.82rem' }}>
-            Link Download Resmi: <code>porto.raffzdigital.biz.id/rebaflix.apk</code>
           </p>
         </div>
       </footer>

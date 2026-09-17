@@ -12,6 +12,7 @@
 
 # production
 /build
+/security-quarantine/
 
 # debug logs
 npm-debug.log*

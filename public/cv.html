@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Vitae - Raffa Rizqi Ramdani | Full Stack Developer</title>
-    <meta name="description" content="Curriculum Vitae Raffa Rizqi Ramdani — Full Stack Web Developer (React, Next.js, Vue, Laravel, TypeScript, Supabase, MySQL, Tailwind CSS) & Kemahiran Bahasa Mandarin HSK 5.">
+    <meta name="description" content="Curriculum Vitae Raffa Rizqi Ramdani, Full Stack Developer yang membangun aplikasi web dan mobile dengan React, Next.js, Laravel, TypeScript, PostgreSQL, Supabase, dan Kotlin.">
     <meta name="keywords" content="Raffa Rizqi Ramdani, CV Full Stack Developer, Resume Web Developer, React, Next.js, Laravel, Vue, TypeScript, MySQL, Supabase, Mandarin HSK 5">
     <meta name="author" content="Raffa Rizqi Ramdani">
-    <link rel="canonical" href="https://porto.raffzdigital.biz.id/cv.html">
+    <link rel="canonical" href="https://www.itsraffa.biz.id/cv.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Curriculum Vitae - Raffa Rizqi Ramdani | Full Stack Developer">
-    <meta property="og:description" content="CV Profesional Raffa Rizqi Ramdani: Full Stack Web Developer (Next.js, React, Vue, Laravel, MySQL, Supabase) & Bahasa Mandarin HSK 5.">
-    <meta property="og:url" content="https://porto.raffzdigital.biz.id/cv.html">
-    <meta property="og:image" content="https://porto.raffzdigital.biz.id/rebasim-preview.png">
+    <meta property="og:description" content="Profil dan pengalaman proyek Raffa Rizqi Ramdani sebagai Full Stack Developer, dari antarmuka responsif hingga API, database, pembayaran, dan deployment.">
+    <meta property="og:url" content="https://www.itsraffa.biz.id/cv.html">
+    <meta property="og:image" content="https://www.itsraffa.biz.id/porto-preview.png">
     <meta property="profile:first_name" content="Raffa Rizqi">
     <meta property="profile:last_name" content="Ramdani">
 
@@ -25,8 +25,8 @@
       "@type": "Person",
       "name": "Raffa Rizqi Ramdani",
       "jobTitle": "Full Stack Developer",
-      "url": "https://porto.raffzdigital.biz.id/cv.html",
-      "image": "https://porto.raffzdigital.biz.id/profile.jpg",
+      "url": "https://www.itsraffa.biz.id/cv.html",
+      "image": "https://www.itsraffa.biz.id/profile.jpg",
       "telephone": "+62895622494773",
       "email": "mailto:raffaxzee@gmail.com",
       "address": {
@@ -46,7 +46,7 @@
       ],
       "knowsAbout": [
         "Full Stack Web Development",
-        "Next.js 14",
+        "Next.js",
         "React.js",
         "Vue.js",
         "Laravel",
@@ -60,7 +60,7 @@
       ],
       "sameAs": [
         "https://github.com/RaffaRizqi",
-        "https://porto.raffzdigital.biz.id"
+        "https://www.itsraffa.biz.id"
       ]
     }
     </script>
@@ -69,13 +69,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
         
         :root {
-            --primary: #0f172a;
-            --primary-blue: #2563eb;
-            --accent-green: #059669;
-            --text-dark: #0f172a;
-            --text-muted: #475569;
-            --border-color: #e2e8f0;
-            --bg-light: #f8fafc;
+            --primary: oklch(21% 0.03 258);
+            --primary-blue: oklch(55% 0.2 257);
+            --accent-green: oklch(55% 0.13 160);
+            --text-dark: oklch(21% 0.03 258);
+            --text-muted: oklch(43% 0.035 257);
+            --border-color: oklch(90% 0.015 255);
+            --bg-light: oklch(97% 0.008 255);
         }
 
         * {
@@ -261,13 +261,14 @@
             line-height: 1.6;
             color: #334155;
             margin-bottom: 1.2rem;
-            text-align: justify;
+            text-align: left;
+            max-width: 74ch;
         }
 
         .value-box {
             background: var(--bg-light);
-            border-left: 3px solid var(--primary-blue);
-            padding: 0.6rem 0.85rem;
+            border: 1px solid var(--border-color);
+            padding: 0.7rem 0.85rem;
             margin-bottom: 1.2rem;
             font-size: 0.84rem;
             line-height: 1.5;
@@ -283,9 +284,10 @@
         }
 
         .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: start;
+            gap: 0.75rem;
             margin-bottom: 0.2rem;
         }
 
@@ -300,6 +302,7 @@
             font-weight: 600;
             color: var(--text-muted);
             font-variant-numeric: tabular-nums;
+            white-space: nowrap;
         }
 
         .item-sub {
@@ -412,6 +415,12 @@
                 padding: 12mm 16mm !important;
                 border-radius: 0 !important;
             }
+
+            .experience-item,
+            .skills-group,
+            .edu-item {
+                break-inside: avoid;
+            }
         }
 
         @media (max-width: 768px) {
@@ -472,7 +481,7 @@
             <header class="header">
                 <div class="header-left">
                     <h1>Raffa Rizqi Ramdani</h1>
-                    <div class="role-subtitle">Full Stack Developer / Web Developer</div>
+                    <div class="role-subtitle">Full Stack Developer</div>
                     <div class="location">Tasikmalaya, Jawa Barat, Indonesia • Terbuka untuk Remote, Hybrid &amp; Onsite</div>
                 </div>
                 <div class="contact-info">
@@ -486,11 +495,11 @@
                     </div>
                     <div>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        <a href="https://porto.raffzdigital.biz.id" target="_blank">porto.raffzdigital.biz.id</a>
+                        <a href="https://www.itsraffa.biz.id" target="_blank" rel="noopener noreferrer">itsraffa.biz.id</a>
                     </div>
                     <div>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                        <a href="https://github.com/RaffaRizqi" target="_blank">github.com/RaffaRizqi</a>
+                        <a href="https://github.com/RaffaRizqi" target="_blank" rel="noopener noreferrer">github.com/RaffaRizqi</a>
                     </div>
                 </div>
             </header>
@@ -499,13 +508,13 @@
             <section>
                 <h2 class="section-title">Tentang Saya</h2>
                 <p class="summary-text">
-                    <strong>Full Stack Web Developer</strong> asal Tasikmalaya yang berpengalaman membangun aplikasi web responsif dan sistem database end-to-end menggunakan <strong>React.js, Next.js 14, Vue.js, Laravel, TypeScript, MySQL, Supabase, dan Tailwind CSS</strong>. Terbiasa menangani arsitektur frontend yang presisi di HP &amp; desktop, pembuatan REST API, sistem autentikasi, webhook payment gateway (QRIS &amp; Pakasir), hingga deployment ke Vercel. Memiliki keunggulan bahasa asing dengan <strong>kemahiran Bahasa Mandarin (HSK 5 / Fluent Professional)</strong> dan Bahasa Inggris teknis untuk kolaborasi tim lokal maupun internasional.
+                    <strong>Full Stack Developer</strong> asal Tasikmalaya yang mengerjakan aplikasi web dan mobile dari antarmuka hingga deployment. Berpengalaman menggunakan <strong>React, Next.js, Vue, Laravel, TypeScript, MySQL, PostgreSQL, Supabase, dan Kotlin</strong> untuk membangun UI responsif, REST API, autentikasi, integrasi pembayaran, serta dashboard operasional. Terbiasa membaca dokumentasi teknis berbahasa Inggris dan dapat berkomunikasi dalam <strong>Bahasa Mandarin setara HSK 5</strong>.
                 </p>
             </section>
 
             <!-- Value Highlight -->
             <div class="value-box">
-                <strong>Kelebihan End-to-End:</strong> Mampu mengeksekusi proyek dari konsep UI/UX &amp; slicing frontend, rancang database &amp; REST API backend, hingga integrasi payment &amp; deployment production. Ditunjang kemampuan komunikasi <strong>Bahasa Mandarin HSK 5</strong>.
+                <strong>Fokus kerja:</strong> menerjemahkan kebutuhan produk menjadi antarmuka yang jelas, alur backend yang dapat dipelihara, integrasi pihak ketiga yang stabil, dan rilis yang dapat diuji di perangkat nyata.
             </div>
 
             <!-- Main Content Grid -->
@@ -513,74 +522,74 @@
                 <!-- Left: Projects & Work Experience -->
                 <main>
                     <section>
-                        <h2 class="section-title">Pengalaman Proyek Full Stack</h2>
+                        <h2 class="section-title">Proyek Pilihan</h2>
 
                         <!-- Project 1: DicodingAja -->
                         <div class="experience-item">
                             <div class="item-header">
-                                <div class="item-title">DicodingAja — Full-Stack Agency &amp; Custom CMS</div>
-                                <div class="item-period">2026 (Coming Soon)</div>
+                                <div class="item-title">DicodingAja, Website Agensi dan CMS</div>
+                                <div class="item-period">2026</div>
                             </div>
-                            <div class="item-sub">Full Stack Developer • React.js + Vite &amp; Laravel 11 REST API</div>
+                            <div class="item-sub">Full Stack Developer · React, Vite, Laravel 11 · Dalam pengembangan</div>
                             <ul class="bullet-list">
-                                <li>Membangun arsitektur <em>Decoupled Full-Stack</em> dengan frontend React.js (Vite) + Tailwind CSS dan backend Laravel 11 REST API.</li>
-                                <li>Merancang Admin Dashboard CMS lengkap dengan otentikasi token <strong>Laravel Sanctum</strong>, modul CRUD artikel blog, paket layanan, dan upload media.</li>
-                                <li>Menerapkan sistem multi-bahasa instan (i18n), dynamic portfolio rendering, dan integrasi direct order WhatsApp.</li>
+                                <li>Memisahkan frontend React dari backend Laravel melalui REST API agar pengembangan dan pemeliharaan setiap bagian lebih terarah.</li>
+                                <li>Membangun CMS internal untuk artikel, layanan, portofolio, dan media, dilengkapi autentikasi Laravel Sanctum.</li>
+                                <li>Menambahkan dukungan multi-bahasa dan alur pemesanan langsung melalui WhatsApp.</li>
                             </ul>
                         </div>
 
                         <!-- Project 2: RebaFlix -->
                         <div class="experience-item">
                             <div class="item-header">
-                                <div class="item-title">RebaFlix — Aplikasi Nonton Film &amp; Series (Android APK)</div>
-                                <div class="item-period">2026 (Live APK)</div>
+                                <div class="item-title">RebaFlix, Aplikasi Android Film dan Series</div>
+                                <div class="item-period">2026</div>
                             </div>
-                            <div class="item-sub">Mobile App Developer &bull; Android APK &bull; Download APK: <a href="https://porto.raffzdigital.biz.id/rebaflix.apk" target="_blank">porto.raffzdigital.biz.id/rebaflix.apk</a></div>
+                            <div class="item-sub">Android Developer · Kotlin · Rilis publik · <a href="https://www.itsraffa.biz.id/rebaflix" target="_blank" rel="noopener noreferrer">itsraffa.biz.id/rebaflix</a></div>
                             <ul class="bullet-list">
-                                <li>Merancang dan mengembangkan aplikasi Android streaming film &amp; series <strong>gratis tanpa iklan</strong> dengan dark UI sinematik premium.</li>
-                                <li>Membangun fitur Katalog Film (Populer, Terbaru, Series Unggulan), filter genre (Horor, Komedi, Thriller, Animasi), dan sistem Watchlist personal.</li>
-                                <li>Mengintegrasikan REST API katalog konten dengan pencarian cerdas dan navigasi bottom bar yang intuitif.</li>
+                                <li>Membangun pengalaman pencarian dan penjelajahan katalog film serta series dengan tampilan gelap yang konsisten di perangkat Android.</li>
+                                <li>Mengembangkan kategori konten, filter genre, detail judul, pemutar video adaptif, dan Watchlist.</li>
+                                <li>Menerbitkan build v1.3.0 untuk Android 8.0+ dengan ukuran 11,1 MB, sekaligus menambahkan halaman distribusi dan statistik download publik secara realtime.</li>
                             </ul>
                         </div>
 
                         <!-- Project 3 (formerly 2) -->
                         <div class="experience-item">
                             <div class="item-header">
-                                <div class="item-title">RebaSIM OTP Wallet — Platform OTP SaaS</div>
+                                <div class="item-title">RebaSIM, Platform Pemesanan Nomor Virtual</div>
                                 <div class="item-period">2026</div>
                             </div>
-                            <div class="item-sub">Full Stack Developer • Website: <a href="https://www.rebasim.my.id" target="_blank">www.rebasim.my.id</a></div>
+                            <div class="item-sub">Full Stack Developer · <a href="https://www.rebasim.my.id" target="_blank" rel="noopener noreferrer">rebasim.my.id</a></div>
                             <ul class="bullet-list">
-                                <li>Mengembangkan web app pemesanan nomor virtual OTP realtime dengan saldo prepaid dan kalkulasi harga otomatis.</li>
-                                <li>Membangun backend integrasi webhook deposit Pakasir agar saldo akun terisi otomatis secara realtime.</li>
-                                <li>Merancang dashboard histori saldo presisi, autentikasi Supabase, dan antarmuka responsif di smartphone.</li>
+                                <li>Mengembangkan alur pemesanan nomor virtual OTP dengan saldo prabayar dan perhitungan harga otomatis.</li>
+                                <li>Mengintegrasikan webhook Pakasir untuk memvalidasi pembayaran dan memperbarui saldo akun secara realtime.</li>
+                                <li>Membangun autentikasi Supabase, riwayat transaksi, dan dashboard yang nyaman digunakan dari smartphone.</li>
                             </ul>
                         </div>
 
                         <!-- Project 2 -->
                         <div class="experience-item">
                             <div class="item-header">
-                                <div class="item-title">RebaMedia — Web App SMM Panel</div>
+                                <div class="item-title">RebaMedia, Platform SMM Panel</div>
                                 <div class="item-period">2026</div>
                             </div>
-                            <div class="item-sub">Full Stack Developer • Website: <a href="https://www.rebamedia.my.id" target="_blank">www.rebamedia.my.id</a></div>
+                            <div class="item-sub">Full Stack Developer · <a href="https://www.rebamedia.my.id" target="_blank" rel="noopener noreferrer">rebamedia.my.id</a></div>
                             <ul class="bullet-list">
-                                <li>Membangun web app SMM panel berbasis <strong>Next.js 14, TypeScript &amp; Supabase</strong> yang ringan dan cepat.</li>
-                                <li>Mengintegrasikan REST API provider reseller untuk pemrosesan pesanan otomatis 24/7.</li>
-                                <li>Memasang callback pembayaran QRIS otomatis dan mengoptimalkan performa load page di mobile browser.</li>
+                                <li>Membangun aplikasi pemesanan layanan media sosial menggunakan <strong>Next.js, TypeScript, dan Supabase</strong>.</li>
+                                <li>Menghubungkan REST API penyedia layanan agar pesanan dapat diteruskan dan dipantau secara otomatis.</li>
+                                <li>Menerapkan callback pembayaran QRIS serta mengoptimalkan navigasi dan waktu muat pada browser mobile.</li>
                             </ul>
                         </div>
 
                         <!-- Project 3 -->
                         <div class="experience-item">
                             <div class="item-header">
-                                <div class="item-title">Website SMKN 2 Tasikmalaya (Full Stack Portal)</div>
-                                <div class="item-period">2025 - 2026</div>
+                                <div class="item-title">Portal Informasi SMKN 2 Tasikmalaya</div>
+                                <div class="item-period">2025–2026</div>
                             </div>
-                            <div class="item-sub">Full Stack Developer • Sistem Informasi Sekolah</div>
+                            <div class="item-sub">Full Stack Developer · Sistem informasi sekolah</div>
                             <ul class="bullet-list">
-                                <li>Mengembangkan sistem informasi sekolah dengan kombinasi frontend React/Vue dan backend <strong>Laravel REST API &amp; MySQL</strong>.</li>
-                                <li>Merancang skema database relasional untuk manajemen data guru, siswa, jurusan, dan berita sekolah.</li>
+                                <li>Mengembangkan portal sekolah menggunakan React dan Vue pada frontend serta <strong>Laravel REST API dan MySQL</strong> pada backend.</li>
+                                <li>Merancang struktur data dan modul pengelolaan guru, siswa, jurusan, berita, serta informasi penerimaan peserta didik.</li>
                             </ul>
                         </div>
 
@@ -590,10 +599,10 @@
                                 <div class="item-title">Website Portofolio Interaktif</div>
                                 <div class="item-period">2026</div>
                             </div>
-                            <div class="item-sub">Full Stack Developer • Website: <a href="https://porto.raffzdigital.biz.id" target="_blank">porto.raffzdigital.biz.id</a></div>
+                            <div class="item-sub">Frontend Developer · <a href="https://www.itsraffa.biz.id" target="_blank" rel="noopener noreferrer">itsraffa.biz.id</a></div>
                             <ul class="bullet-list">
-                                <li>Membangun portofolio interaktif bergaya Neo-Brutalism dengan Next.js 14, TypeScript, dan SEO Schema JSON-LD.</li>
-                                <li>Menata layout responsif mobile-first, optimasi Google PageSpeed, dan SSL deployment di Vercel.</li>
+                                <li>Membangun portofolio bergaya neo-brutalist menggunakan Next.js dan TypeScript, dilengkapi metadata SEO serta structured data JSON-LD.</li>
+                                <li>Menguji layout dari layar 320 px hingga desktop, memperbaiki aksesibilitas dasar, dan melakukan deployment melalui Vercel.</li>
                             </ul>
                         </div>
                     </section>
@@ -608,7 +617,7 @@
                         <div class="skills-group">
                             <div class="skills-label">Full Stack &amp; Frontend</div>
                             <div class="skill-tags">
-                                <span class="skill-tag highlight">Next.js 14</span>
+                                <span class="skill-tag highlight">Next.js</span>
                                 <span class="skill-tag highlight">React.js</span>
                                 <span class="skill-tag highlight">Vue.js</span>
                                 <span class="skill-tag highlight">TypeScript</span>
@@ -647,14 +656,14 @@
                         <h2 class="section-title">Bahasa</h2>
                         <div style="font-size: 0.83rem; color: #334155; display: flex; flex-direction: column; gap: 0.4rem;">
                             <div>
-                                <strong>Bahasa Indonesia:</strong> Penutur Asli (Native)
+                                <strong>Bahasa Indonesia:</strong> Penutur asli
                             </div>
                             <div style="background: #fefce8; border: 1px solid #fef08a; padding: 0.35rem 0.5rem; border-radius: 4px;">
-                                <strong style="color: #854d0e;">Bahasa Mandarin:</strong> <strong>Mahir (HSK 5 / Fluent)</strong>
-                                <div style="font-size: 0.75rem; color: #a16207; margin-top: 0.1rem;">Lancar komunikasi lisan &amp; tulisan</div>
+                                <strong style="color: #854d0e;">Bahasa Mandarin:</strong> <strong>Setara HSK 5</strong>
+                                <div style="font-size: 0.75rem; color: #a16207; margin-top: 0.1rem;">Komunikasi lisan dan tulisan</div>
                             </div>
                             <div>
-                                <strong>Bahasa Inggris:</strong> Profesional (Dokumentasi &amp; Teknis)
+                                <strong>Bahasa Inggris:</strong> Teknis dan dokumentasi
                             </div>
                         </div>
                     </section>
@@ -665,7 +674,7 @@
                         <div class="edu-item">
                             <div class="edu-school">SMKN 2 Tasikmalaya</div>
                             <div class="edu-major">Rekayasa Perangkat Lunak (RPL)</div>
-                            <div class="edu-year">2025 - 2028 (Perkiraan)</div>
+                            <div class="edu-year">2025–2028 (perkiraan lulus)</div>
                         </div>
                     </section>
                 </aside>

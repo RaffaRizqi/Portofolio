@@ -28,12 +28,12 @@ export const PROJECTS = [
   },
   {
     title: 'RebaFlix — Aplikasi Nonton Film & Series',
-    description: 'Aplikasi Android untuk streaming film dan series gratis tanpa iklan. Menampilkan konten populer, kategori genre (Horor, Komedi, Thriller, Animasi), fitur Watchlist, pencarian cerdas, dan tampilan sinematik bergaya dark UI premium.',
-    techStack: ['Android (APK)', 'Dark UI/UX', 'RESTful API', 'Katalog Film', 'Watchlist', 'Tanpa Iklan'],
+    description: 'Aplikasi Android untuk streaming film dan series dengan kategori genre, Watchlist, pencarian, dan dark UI sinematik. Build release teroptimasi v1.3.0 tersedia melalui halaman resmi.',
+    techStack: ['Android', 'Dark UI/UX', 'RESTful API', 'Katalog Film', 'Watchlist', 'R8 Optimized'],
     category: ['Mobile', 'UI/UX'],
     image: '/rebaflix-preview.png',
-    link: '/rebaflix.apk',
-    isDownloadable: true
+    link: '/rebaflix',
+    isReleasePaused: false
   },
   {
     title: 'Website SMKN 2 Tasikmalaya (Full Stack)',
@@ -74,7 +74,7 @@ export const PROJECTS = [
     techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Vercel'],
     category: ['Web', 'UI/UX'],
     image: '/porto-preview.png',
-    link: 'https://porto.raffzdigital.biz.id'
+    link: 'https://www.itsraffa.biz.id'
   },
   {
     title: 'Website Top Up Game (v1 Legacy)',

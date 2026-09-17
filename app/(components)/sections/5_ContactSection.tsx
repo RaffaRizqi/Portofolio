@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { ArrowRight, FileText, Github, Instagram, Linkedin, Mail, MessageCircle, Twitter } from 'lucide-react';
+import { ArrowRight, AtSign, BriefcaseBusiness, Camera, CodeXml, FileText, Mail, MessageCircle } from 'lucide-react';
 import styles from './sections.module.css';
 import { Reveal } from '../ui/Reveal';
 import { TextReveal } from '../ui/TextReveal';
@@ -105,22 +105,22 @@ export function ContactSection() {
                 {
                   name: 'GitHub RaffaStore',
                   url: 'https://github.com/RaffaRizqi',
-                  icon: <Github size={24} />
+                  icon: <CodeXml size={24} />
                 },
                 {
                   name: 'LinkedIn',
                   url: 'https://www.linkedin.com/in/raffa-rizki-95ab66373?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-                  icon: <Linkedin size={24} />
+                  icon: <BriefcaseBusiness size={24} />
                 },
                 {
                   name: 'X',
                   url: 'https://x.com/RaffaRizqi02',
-                  icon: <Twitter size={24} />
+                  icon: <AtSign size={24} />
                 },
                 {
                   name: 'Instagram',
                   url: 'https://www.instagram.com/raffa.r07',
-                  icon: <Instagram size={24} />
+                  icon: <Camera size={24} />
                 },
                 {
                   name: 'TikTok',

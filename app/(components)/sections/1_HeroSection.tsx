@@ -54,9 +54,10 @@ export function HeroSection() {
           setTypedRole(currentRole.slice(0, typedRole.length - 1));
         }, 40);
       } else {
-        // Finished deleting, move to next role
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        timeout = setTimeout(() => {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        }, 0);
       }
     }
 
@@ -92,14 +93,14 @@ export function HeroSection() {
               <span>Open for Full Stack Developer Jobs</span>
             </div>
             <a href="/rebaflix" className={styles.heroAnnouncementBanner} style={{ marginBottom: 0 }}>
-              <span className={styles.announcementTag}>NEW APK</span>
-              <span>RebaFlix: Nonton Film Gratis</span>
+              <span className={styles.announcementTag}>STATUS</span>
+              <span>RebaFlix v1.3.0: build terbaru tersedia</span>
               <ArrowRight size={14} />
             </a>
           </div>
           
           <h1 className={styles.title}>
-            Halo, saya Raffa,
+            Halo, saya Raffa Rizqi Ramdani,
             <br />
             <span className={styles.gradientText}>
               {typedRole}
