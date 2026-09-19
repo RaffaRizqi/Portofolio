@@ -111,6 +111,7 @@ const jsonLd = {
           name: 'DicodingAja — Full-Stack Agency & Custom CMS',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
+          url: 'https://dicodingaja.my.id/',
           description: 'Decoupled Full-Stack Web App for digital agency with React.js Vite frontend and Laravel 11 REST API backend with Sanctum Auth and custom CMS dashboard.',
         },
         {

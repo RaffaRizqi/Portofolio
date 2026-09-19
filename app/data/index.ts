@@ -19,12 +19,11 @@ export const SKILLS = [
 export const PROJECTS = [
   {
     title: 'DicodingAja — Full-Stack Agency & Custom CMS',
-    description: 'Decoupled Full-Stack Web App untuk digital agency. Frontend modern React.js + Vite + Tailwind CSS dengan sistem multi-bahasa (i18n), backend Laravel 11 REST API, MySQL database, sistem autentikasi Laravel Sanctum, dan Admin Dashboard CMS lengkap.',
+    description: 'Website digital agency yang sudah live dengan frontend React.js, Vite, dan Tailwind CSS, serta backend Laravel 11 REST API, MySQL, autentikasi Laravel Sanctum, dan CMS internal.',
     techStack: ['React.js', 'Vite', 'Tailwind CSS', 'Laravel 11', 'MySQL', 'Sanctum Auth', 'REST API'],
     category: ['Web', 'Backend', 'UI/UX'],
     image: '/dicodingaja-preview.png',
-    link: '#',
-    isComingSoon: true
+    link: 'https://dicodingaja.my.id/'
   },
   {
     title: 'RebaFlix — Aplikasi Nonton Film & Series',
