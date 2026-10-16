@@ -62,10 +62,18 @@ const jsonLd = {
           alternateName: 'en (Technical & Documentation)',
         },
       ],
-      alumniOf: {
-        '@type': 'EducationalOrganization',
-        name: 'SMKN 2 Tasikmalaya',
-      },
+      affiliation: [
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Zhejiang University International Business School (ZIBS), Zhejiang University',
+          description: 'Bachelor degree candidate, nearing graduation.',
+        },
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Zhejiang University of Technology',
+          description: 'Master degree student.',
+        },
+      ],
       knowsAbout: [
         'Full Stack Web Development',
         'Next.js 14',
