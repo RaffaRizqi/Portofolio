@@ -832,6 +832,7 @@
 }
 @media(min-width: 768px) { .modalImgBox { border-bottom: none; border-right: 2.5px solid #121316; } }
 .modalImg { object-fit: cover; }
+.modalImgContain { object-fit: contain !important; background-color: #0b0f17; }
 .modalInfo {
   padding: 2.25rem;
   display: flex;

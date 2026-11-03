@@ -35,8 +35,19 @@ export const PROJECTS = [
     isReleasePaused: false
   },
   {
-    title: 'Website SMKN 2 Tasikmalaya (Full Stack)',
-    description: 'Sistem informasi & portal website resmi sekolah SMKN 2 Tasikmalaya. Dikembangkan full stack dengan React, Vue.js, Laravel REST API, dan database MySQL.',
+    title: 'ITechno Cup 2026 — Web Development Competition',
+    description: 'Partisipasi kompetisi Web Development tingkat nasional (kategori Siswa SMA/SMK) yang diselenggarakan oleh HIMATIK Politeknik Negeri Jakarta (PNJ). Mewakili tim DragonTech.',
+    techStack: ['Web Development', 'DragonTech', 'HIMATIK PNJ', 'Responsive Web', 'UI/UX Design'],
+    category: ['Web', 'UI/UX', 'Kompetisi'],
+    image: '/itechno-cup-certificate.png',
+    link: '/itechno-cup-certificate.pdf',
+    badgeText: 'Kompetisi',
+    customActionText: 'Lihat Sertifikat Resmi (PDF)',
+    isCertificate: true
+  },
+  {
+    title: 'Website SMKN 2 Kota Tasikmalaya (Full Stack)',
+    description: 'Sistem informasi & portal website resmi sekolah SMKN 2 Kota Tasikmalaya. Dikembangkan full stack dengan React, Vue.js, Laravel REST API, dan database MySQL.',
     techStack: ['React', 'Vue.js', 'Laravel', 'MySQL', 'Full Stack'],
     category: ['Web', 'UI/UX', 'Backend'],
     image: '/smkn2-preview.png',

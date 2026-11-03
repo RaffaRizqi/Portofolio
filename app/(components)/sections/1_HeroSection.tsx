@@ -20,7 +20,7 @@ export function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  const whatsappUrl = 'https://wa.me/62895622494773?text=Halo%20Raffa,%20saya%20tertarik%20dengan%20portfolio%20kamu';
+  const whatsappUrl = 'https://wa.me/6281385435612?text=Halo%20Raffa,%20saya%20tertarik%20dengan%20portfolio%20kamu';
   const heroStats = [
     { value: '15+', label: 'Web diselesaikan' },
     { value: '100%', label: 'Responsive HP' },

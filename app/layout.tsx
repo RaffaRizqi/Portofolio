@@ -33,7 +33,7 @@ const jsonLd = {
       jobTitle: 'Full Stack Developer',
       description: 'Full Stack Web Developer from Tasikmalaya with expertise in React, Next.js, Vue, Laravel, TypeScript, MySQL, Supabase, and fluent in Mandarin Chinese (HSK 5).',
       email: 'mailto:raffaxzee@gmail.com',
-      telephone: '+62895622494773',
+      telephone: '+6281385435612',
       gender: 'Male',
       nationality: {
         '@type': 'Country',
@@ -62,16 +62,29 @@ const jsonLd = {
           alternateName: 'en (Technical & Documentation)',
         },
       ],
+      alumniOf: {
+        '@type': 'EducationalOrganization',
+        name: 'SMKN 2 Kota Tasikmalaya',
+      },
       affiliation: [
         {
           '@type': 'EducationalOrganization',
-          name: 'Zhejiang University International Business School (ZIBS), Zhejiang University',
-          description: 'Bachelor degree candidate, nearing graduation.',
+          name: 'SMKN 2 Kota Tasikmalaya',
+          description: 'Rekayasa Perangkat Lunak (RPL) · Lulus 2028',
         },
+      ],
+      hasCredential: [
         {
-          '@type': 'EducationalOrganization',
-          name: 'Zhejiang University of Technology',
-          description: 'Master degree student.',
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Participant - Web Development Competition (High School Category)',
+          credentialCategory: 'Certificate of Participation',
+          identifier: '1252/PL3.13/SRt/ITECHNO CUP/HIMATIK PNJ/IX/2026',
+          recognizedBy: {
+            '@type': 'EducationalOrganization',
+            name: 'HIMATIK Politeknik Negeri Jakarta (PNJ)',
+          },
+          dateCreated: '2026-09-29',
+          url: `${siteUrl}/itechno-cup-certificate.pdf`,
         },
       ],
       knowsAbout: [
@@ -143,7 +156,7 @@ const jsonLd = {
         {
           '@type': 'SoftwareApplication',
           position: 4,
-          name: 'Website SMKN 2 Tasikmalaya',
+          name: 'Website SMKN 2 Kota Tasikmalaya',
           applicationCategory: 'EducationalApplication',
           operatingSystem: 'Web',
           description: 'Full stack school management & information system built with React, Vue.js, Laravel REST API, and MySQL.',
@@ -159,6 +172,15 @@ const jsonLd = {
           description: 'Aplikasi Android untuk menonton film dan serial. Build release teroptimasi v1.3.0 tersedia melalui halaman resmi.',
           downloadUrl: `${siteUrl}/rebaflix.apk`,
           author: { '@id': `${siteUrl}/#person` },
+        },
+        {
+          '@type': 'SoftwareApplication',
+          position: 6,
+          name: 'ITechno Cup 2026 — Web Development Competition (DragonTech)',
+          applicationCategory: 'EducationalApplication',
+          operatingSystem: 'Web',
+          url: `${siteUrl}/itechno-cup-certificate.pdf`,
+          description: 'Partisipasi kompetisi Web Development tingkat nasional kategori siswa SMA/SMK oleh HIMATIK Politeknik Negeri Jakarta (PNJ) bersama tim DragonTech.',
         },
       ],
     },

@@ -42,6 +42,7 @@ export function Navbar() {
         <a href="/rebaflix" className={styles.navLinkSpecial}>
           <Smartphone size={14} /> RebaFlix
         </a>
+        <a href="/cv.html" className={styles.navLink}>CV</a>
         <a href="#hire" className={styles.navLink}>Hire Me</a>
         <a href="#services" className={styles.navLink}>Services</a>
         <a href="#contact" className={styles.navLink}>Contact</a>
@@ -72,6 +73,7 @@ export function Navbar() {
           <a href="/rebaflix" className={styles.mobileLinkSpecial} onClick={() => setIsMenuOpen(false)}>
             <Smartphone size={16} /> RebaFlix (Download APK)
           </a>
+          <a href="/cv.html" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Curriculum Vitae (ATS)</a>
           <a href="#hire" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Hire Me</a>
           <a href="#services" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>Services</a>
           <a href="#contact" className={styles.button} onClick={() => setIsMenuOpen(false)} style={{ display: 'flex', justifyContent: 'center' }}>Let&apos;s Talk</a>

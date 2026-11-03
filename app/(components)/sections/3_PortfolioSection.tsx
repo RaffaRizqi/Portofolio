@@ -76,7 +76,7 @@ export function PortfolioSection() {
               <p className={styles.desc} style={{ marginBottom: 0 }}>Beberapa proyek web yang sudah saya bangun dan aktif di-deploy ke production.</p>
             </div>
             <div className={styles.filters}>
-              {['All', 'Web', 'Mobile', 'UI/UX', 'Backend'].map((filter) => (
+              {['All', 'Web', 'Mobile', 'Kompetisi', 'UI/UX', 'Backend'].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
@@ -169,10 +169,16 @@ export function PortfolioSection() {
                     style={
                       'isComingSoon' in project && project.isComingSoon
                         ? { background: 'linear-gradient(135deg, #f59e0b, #ef4444)', color: '#ffffff' }
+                        : 'badgeText' in project && project.badgeText
+                        ? { background: 'linear-gradient(135deg, #7c3aed, #db2777)', color: '#ffffff' }
                         : undefined
                     }
                   >
-                    {'isComingSoon' in project && project.isComingSoon ? 'Coming Soon' : 'Live'}
+                    {'isComingSoon' in project && project.isComingSoon
+                      ? 'Coming Soon'
+                      : 'badgeText' in project && project.badgeText
+                      ? project.badgeText
+                      : 'Live'}
                   </span>
                 </div>
                 <div className={styles.cardContent}>
@@ -206,7 +212,7 @@ export function PortfolioSection() {
                 alt={selectedProject.title}
                 fill
                 sizes="(min-width: 768px) 55vw, 100vw"
-                className={styles.modalImg}
+                className={`${styles.modalImg} ${'isCertificate' in selectedProject && selectedProject.isCertificate ? styles.modalImgContain : ''}`}
               />
             </div>
             <div className={styles.modalInfo}>
@@ -263,7 +269,9 @@ export function PortfolioSection() {
                 </button>
               ) : selectedProject.link && selectedProject.link !== '#' ? (
                 <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className={styles.modalAction} style={{ display: 'block', textDecoration: 'none' }}>
-                  Buka Website Live
+                  {'customActionText' in selectedProject && selectedProject.customActionText
+                    ? selectedProject.customActionText
+                    : 'Buka Website Live'}
                 </a>
               ) : (
                 <button className={styles.modalAction} disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>Private / Local Project</button>

@@ -9,7 +9,7 @@ import { ScrollVelocityText } from '../ui/ScrollVelocityText';
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const whatsappUrl = 'https://wa.me/62895622494773?text=Halo%20Raffa,%20saya%20tertarik%20dengan%20profil%20dan%20CV%20Anda';
+  const whatsappUrl = 'https://wa.me/6281385435612?text=Halo%20Raffa,%20saya%20tertarik%20dengan%20profil%20dan%20CV%20Anda';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
