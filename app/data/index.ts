@@ -26,6 +26,14 @@ export const PROJECTS = [
     link: 'https://dicodingaja.my.id/'
   },
   {
+    title: 'KASmart — Multi-Tenant School POS & Inventory',
+    description: 'Sistem point-of-sale kasir dan inventaris sekolah multi-tenant berbasis React, PHP, dan Laravel 11 dengan pemisahan hak akses kasir, gudang, dan admin sekolah.',
+    techStack: ['React', 'PHP', 'Laravel 11', 'MySQL', 'Multi-Tenant', 'POS'],
+    category: ['Web', 'Backend', 'UI/UX'],
+    image: '/kasmart-preview.png',
+    link: 'https://kassmart.biz.id/'
+  },
+  {
     title: 'RebaFlix — Aplikasi Nonton Film & Series',
     description: 'Aplikasi Android untuk streaming film dan series dengan kategori genre, Watchlist, pencarian, dan dark UI sinematik. Build release teroptimasi v1.3.0 tersedia melalui halaman resmi.',
     techStack: ['Android', 'Dark UI/UX', 'RESTful API', 'Katalog Film', 'Watchlist', 'R8 Optimized'],
