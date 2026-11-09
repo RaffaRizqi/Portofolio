@@ -19,7 +19,7 @@
 
         function getCardStep() {
             const vpWidth = viewport.clientWidth || window.innerWidth;
-            return Math.min(255, vpWidth * 0.66);
+            return Math.min(270, vpWidth * 0.72);
         }
 
         function render() {
@@ -36,7 +36,7 @@
 
                 const absDiff = Math.abs(diff);
 
-                if (absDiff > 1.8) {
+                if (absDiff > 1.4) {
                     card.style.opacity = '0';
                     card.style.pointerEvents = 'none';
                     card.style.transform = 'translate3d(0, 0, -400px) scale(0.6)';
@@ -45,11 +45,11 @@
                 }
 
                 const tx = diff * cardStep;
-                const rotY = -diff * 22;
-                const tz = -absDiff * 55;
-                const scale = 1 - Math.min(0.2, absDiff * 0.12);
-                const opacity = Math.max(0, 1 - absDiff * 0.42);
-                const zIndex = Math.round(100 - absDiff * 20);
+                const rotY = -diff * 18;
+                const tz = -absDiff * 60;
+                const scale = 1 - Math.min(0.22, absDiff * 0.14);
+                const opacity = absDiff < 0.45 ? 1 : Math.max(0, 0.45 - (absDiff - 0.45) * 0.35);
+                const zIndex = Math.round(100 - absDiff * 25);
 
                 card.style.transform = `translate3d(${tx.toFixed(1)}px, 0, ${tz.toFixed(1)}px) rotateY(${rotY.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
                 card.style.opacity = opacity.toFixed(3);
@@ -58,12 +58,9 @@
                 if (absDiff < 0.45) {
                     card.classList.add('is-active');
                     card.style.pointerEvents = 'auto';
-                } else if (absDiff < 1.3) {
-                    card.classList.remove('is-active');
-                    card.style.pointerEvents = 'auto';
                 } else {
                     card.classList.remove('is-active');
-                    card.style.pointerEvents = 'none';
+                    card.style.pointerEvents = 'auto';
                 }
             });
 
