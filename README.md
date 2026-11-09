@@ -87,3 +87,4 @@ You are free to explore, learn from, and reference this codebase. If you deploy,
 3. Removing author watermarks, obfuscated integrity checks, or copyright headers without permission is strictly prohibited.
 
 Made with ☕ and passion by [Raffa Rizqi Ramdani](https://itsraffa.biz.id).
+
