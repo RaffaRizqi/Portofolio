@@ -7,7 +7,7 @@
         1: {
             eyebrow: "01 / Engineering Scope",
             title: "Full-Stack Web Development",
-            image: "/hero-images/1.png",
+            image: "/images/services/fullstack-web.png",
             points: [
                 "Next.js 16 & React 19 Architecture",
                 "Tailwind CSS Responsive Design",
@@ -19,7 +19,7 @@
         2: {
             eyebrow: "02 / Engineering Scope",
             title: "Backend & Database Systems",
-            image: "/hero-images/5.png",
+            image: "/images/services/backend-apis.png",
             points: [
                 "Laravel 11 & Node.js REST APIs",
                 "Supabase & PostgreSQL Integrations",
@@ -31,7 +31,7 @@
         3: {
             eyebrow: "03 / Engineering Scope",
             title: "Mobile & Android Applications",
-            image: "/hero-images/2.png",
+            image: "/images/services/mobile-apps.png",
             points: [
                 "Native Kotlin Android Development",
                 "ExoPlayer Media & Video Streaming",
@@ -43,7 +43,7 @@
         4: {
             eyebrow: "04 / Engineering Scope",
             title: "UI/UX & Creative Engineering",
-            image: "/hero-images/3.png",
+            image: "/images/services/ui-ux-creative.png",
             points: [
                 "Interactive WebGL & Three.js 3D",
                 "Lenis Smooth Scrolling & Motion",
