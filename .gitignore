@@ -39,3 +39,4 @@ Thumbs.db
 .vscode/
 .idea/
 .sixth/
+.playwright-cli/

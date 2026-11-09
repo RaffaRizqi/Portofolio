@@ -1,0 +1,402 @@
+/* ─── Shared Floating Drawer Navigation Styles ─── */
+:root {
+    --nav-top-spacing: 16px;
+    --handle-height: 32px;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --nav-top-spacing: calc(20px + env(safe-area-inset-top));
+        --handle-height: 30px;
+    }
+}
+
+.limelight-nav-container {
+    position: fixed;
+    top: var(--nav-top-spacing);
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-100% + var(--handle-height) - var(--nav-top-spacing)));
+    z-index: 1000;
+    width: 360px;
+    max-width: 92vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    pointer-events: none;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.limelight-nav-container.is-dragging {
+    transition: none !important;
+}
+
+.limelight-nav-container.is-open {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Hardened Center-Lock Safeguard: Guarantees translateX(-50%) cannot be stripped or shifted */
+#limelight-nav-container:not(.is-open):not(.is-dragging),
+.limelight-nav-container:not(.is-open):not(.is-dragging) {
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(-50%) translateY(calc(-100% + var(--handle-height) - var(--nav-top-spacing))) !important;
+}
+
+#limelight-nav-container.is-open:not(.is-dragging),
+.limelight-nav-container.is-open:not(.is-dragging) {
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+.limelight-nav-panel {
+    pointer-events: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Base navbar panel */
+.limelight-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background: #000000 !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    padding: 4px 12px;
+    gap: 8px;
+    position: relative;
+    box-shadow: none !important;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+/* When closed, keep signature primary orange on PULL DOWN handle */
+.limelight-nav-container:not(.is-open) .limelight-drawer-handle {
+    border-left: 1px solid var(--primary) !important;
+    border-right: 1px solid var(--primary) !important;
+    border-bottom: 1px solid var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+/* Mechanical Drawer Handle Button */
+.limelight-drawer-handle {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-top: none !important; /* Top border removed for seamless integration */
+    border-bottom-left-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
+    color: #EDEDED;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0 16px;
+    height: var(--handle-height);
+    width: 100%; /* Matches exact width of panel on desktop */
+    cursor: grab;
+    
+    outline: none;
+    touch-action: none;
+    user-select: none;
+    margin-top: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, visibility 0.25s ease;
+}
+
+.limelight-drawer-handle.is-grabbing {
+    cursor: grabbing !important;
+}
+
+.limelight-drawer-handle:hover,
+.limelight-drawer-handle:focus-visible {
+    background: #0a0a0a !important;
+}
+
+.drawer-handle-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transform: translateY(6px);
+    transition: transform 0.25s ease;
+}
+
+.limelight-nav-container.is-open .drawer-handle-content {
+    transform: translateY(0);
+}
+
+/* Compact 3 stacked chevrons matching font size */
+.drawer-stacked-chevrons {
+    width: 12px;
+    height: 12px;
+    color: var(--primary);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* ─── DESKTOP OPEN STATE HOVER-ONLY VISIBILITY RULES (≥ 768px) ─── */
+@media (min-width: 768px) {
+    /* 1. Default Open State (No Hover): Border transparent, CLOSE handle hidden */
+    .limelight-nav-container.is-open .limelight-nav {
+        border-color: transparent !important;
+    }
+
+    .limelight-nav-container.is-open .limelight-drawer-handle {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-6px);
+    }
+
+    /* 2. Explicit JS-managed .is-hovered state on open container (Clean neutral borders, NO orange border) */
+    .limelight-nav-container.is-open.is-hovered .limelight-nav {
+        border-color: rgba(255, 255, 255, 0.18) !important;
+    }
+
+    .limelight-nav-container.is-open.is-hovered .limelight-drawer-handle,
+    .limelight-nav-container.is-open.is-dragging .limelight-drawer-handle {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0);
+        border-left: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+    }
+}
+
+/* Navigation Links */
+.limelight-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    pointer-events: auto;
+}
+
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover / Active spotlight effect */
+.limelight-nav-item::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2px;
+    background: var(--primary);
+    
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.limelight-beam {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(235, 70, 4, 0.18) 0%, rgba(235, 70, 4, 0) 100%);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.limelight-nav-item:hover {
+    color: var(--primary);
+}
+
+.limelight-nav-item:hover .nav-icon {
+    transform: none !important;
+}
+
+.limelight-nav-item.active {
+    color: var(--primary);
+}
+
+.limelight-nav-item.active::before,
+.limelight-nav-item.active .limelight-beam {
+    opacity: 1;
+}
+
+/* Tooltips - Clean text only on hover, NO orange border */
+.nav-tooltip {
+    position: absolute;
+    top: 57px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2px);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #FFFFFF !important;
+    font-family: 'Inter Tight', var(--font-sans), sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.limelight-nav-item:hover .nav-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* When hovering any nav item, hide CLOSE in drawer handle so only the function text is shown */
+.limelight-nav-container.has-item-hover .drawer-handle-content,
+.limelight-nav-container:has(.limelight-nav-item:hover) .drawer-handle-content {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.15s ease;
+}
+
+/* Sequential Downward Chevron Animation */
+.chevron-line {
+    transition: stroke 0.25s ease, opacity 0.25s ease;
+    stroke: rgba(235, 70, 4, 0.35);
+    opacity: 0.4;
+}
+
+.chevron-top {
+    animation: chevronSequence 1.8s infinite ease-in-out;
+    animation-delay: 0s;
+}
+
+.chevron-mid {
+    animation: chevronSequence 1.8s infinite ease-in-out;
+    animation-delay: 0.6s;
+}
+
+.chevron-bot {
+    animation: chevronSequence 1.8s infinite ease-in-out;
+    animation-delay: 1.2s;
+}
+
+@keyframes chevronSequence {
+    0% {
+        stroke: var(--primary);
+        opacity: 1;
+    }
+    28% {
+        stroke: var(--primary);
+        opacity: 1;
+    }
+    40% {
+        stroke: rgba(235, 70, 4, 0.35);
+        opacity: 0.4;
+    }
+    100% {
+        stroke: rgba(235, 70, 4, 0.35);
+        opacity: 0.4;
+    }
+}
+
+/* ─── REFINED MOBILE NAVIGATION STYLES (< 767px) ─── */
+@media (max-width: 767px) {
+    .limelight-nav-container {
+        width: 82vw;
+        max-width: 360px;
+    }
+    
+    .limelight-nav {
+        padding: 4px 10px;
+        gap: 14px;
+        justify-content: center;
+        border-color: transparent !important;
+    }
+    
+    .limelight-nav-item {
+        width: 48px;
+        height: 44px;
+    }
+    
+    .nav-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .limelight-nav-item::before {
+        width: 24px;
+        top: -2px;
+    }
+    
+    .limelight-beam {
+        top: -2px;
+        width: 40px;
+        height: 46px;
+    }
+    
+    /* Closed PULL DOWN handle is content-sized, centered, with equal padding */
+    .limelight-drawer-handle {
+        height: var(--handle-height);
+        font-size: 11px;
+        padding: 0 20px;
+        width: fit-content !important;
+        max-width: max-content !important;
+        align-self: center !important;
+        cursor: pointer;
+        border-left: 1px solid var(--primary) !important;
+        border-right: 1px solid var(--primary) !important;
+        border-bottom: 1px solid var(--primary) !important;
+        border-top: none !important;
+    }
+    
+    .drawer-handle-content {
+        gap: 10px;
+    }
+    
+    /* On mobile open state: hide handle completely, NO CLOSE bar */
+    .limelight-nav-container.is-open .limelight-drawer-handle,
+    .limelight-nav-container.is-open:hover .limelight-drawer-handle,
+    .limelight-nav-container.is-open:focus-within .limelight-drawer-handle {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .limelight-nav-container.is-open .limelight-nav,
+    .limelight-nav-container.is-open:hover .limelight-nav {
+        border-color: transparent !important;
+    }
+
+    .nav-tooltip {
+        display: none;
+    }
+}

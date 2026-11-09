@@ -58,6 +58,16 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/',
+          destination: '/home.html',
+        },
+      ],
+    };
+  },
   async redirects() {
     return [
       {

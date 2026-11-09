@@ -1,0 +1,297 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   INK LOADER & FLUID DISSOLVE TRANSITION (divyarajchauhan.in)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Full-Screen Pure Black Loader Overlay - HIDDEN BY DEFAULT to prevent any 0% flash */
+#loader-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 99999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: all;
+    user-select: none;
+    will-change: opacity;
+    transition: opacity 0.3s ease;
+}
+
+/* ONLY display when html has class 'has-loader' AND does not have 'no-loader' */
+html.has-loader:not(.no-loader) #loader-overlay {
+    display: flex !important;
+}
+
+/* Brutalist Mono Metadata Tag above Counter */
+.loader-meta-tag {
+    font-family: var(--font-mono, 'Space Mono', monospace);
+    font-size: clamp(10px, 1.1vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.42);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+    will-change: transform, opacity;
+}
+
+/* Orange blinking dot completely removed as requested */
+.loader-meta-tag .live-dot {
+    display: none !important;
+}
+
+/* Massive Numeric Percentage Counter (User specified size: 200) */
+#loader-counter {
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(72px, 15vw, 200px) !important;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    will-change: transform, opacity, color;
+}
+
+/* Sub-Status Line under Counter */
+.loader-status-sub {
+    font-family: var(--font-mono, 'Space Mono', monospace);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.28);
+    text-transform: uppercase;
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Full-Screen WebGL FBM Dissolve Canvas - HIDDEN BY DEFAULT */
+#loader-gl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99998;
+    pointer-events: none;
+    display: none;
+}
+
+html.has-loader:not(.no-loader) #loader-gl-canvas {
+    display: block !important;
+}
+
+/* ─── Hero Section Component Revealing Choreography ─── */
+
+/* 1. Primed / Waiting state (hidden behind the ink) - ONLY when has-loader is actively active */
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-3d-gallery-scene {
+    opacity: 0 !important;
+    filter: blur(36px) !important;
+    transform: scale(0.92) !important;
+    transition: none !important;
+}
+
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-title {
+    opacity: 0 !important;
+    transform: translateY(48px) !important;
+    filter: blur(14px) !important;
+    transition: none !important;
+}
+
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-subtitle-mono {
+    opacity: 0 !important;
+    transform: translateY(24px) !important;
+    filter: blur(10px) !important;
+    transition: none !important;
+}
+
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-top-meta {
+    opacity: 0 !important;
+    transform: translateY(-16px) !important;
+    transition: none !important;
+}
+
+html.has-loader:not(.no-loader) .hero-loading-primed .hero-bottom-meta {
+    opacity: 0 !important;
+    transform: translateY(16px) !important;
+    transition: none !important;
+}
+
+html.has-loader:not(.no-loader) .hero-loading-primed ~ #limelight-nav-container,
+html.has-loader:not(.no-loader) .hero-loading-primed ~ * .limelight-nav-container,
+html.has-loader:not(.no-loader) .hero-loading-primed .limelight-nav-container,
+html.has-loader:not(.no-loader) body:has(.hero-loading-primed) .limelight-nav-container {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: none !important;
+}
+
+/* 2. When has-loader is NOT present or when no-loader is present: Hero is 100% visible immediately */
+html:not(.has-loader) .hero-loading-primed .hero-3d-gallery-scene,
+html:not(.has-loader) .hero-loading-primed .hero-title,
+html:not(.has-loader) .hero-loading-primed .hero-subtitle-mono,
+html:not(.has-loader) .hero-loading-primed .hero-top-meta,
+html:not(.has-loader) .hero-loading-primed .hero-bottom-meta,
+html.no-loader .hero-loading-primed .hero-3d-gallery-scene,
+body.no-loader .hero-loading-primed .hero-3d-gallery-scene,
+html.no-loader .hero-loading-primed .hero-title,
+body.no-loader .hero-loading-primed .hero-title,
+html.no-loader .hero-loading-primed .hero-subtitle-mono,
+body.no-loader .hero-loading-primed .hero-subtitle-mono,
+html.no-loader .hero-loading-primed .hero-top-meta,
+body.no-loader .hero-loading-primed .hero-top-meta,
+html.no-loader .hero-loading-primed .hero-bottom-meta,
+body.no-loader .hero-loading-primed .hero-bottom-meta {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Ensure navigation bar is visible and clickable when loader is bypassed, without stripping translateX(-50%) */
+html:not(.has-loader) .limelight-nav-container,
+html.no-loader .limelight-nav-container,
+body.no-loader .limelight-nav-container {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* 3. Animated-In State (orchestrated staggered bloom as ink opens) */
+.hero-animated-in .hero-3d-gallery-scene {
+    opacity: 1 !important;
+    filter: blur(0px) !important;
+    transform: scale(1) !important;
+    transition: 
+        opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+        filter 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+        transform 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s !important;
+}
+
+.hero-animated-in .hero-title {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    filter: blur(0px) !important;
+    transition: 
+        opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.28s,
+        transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.28s,
+        filter 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.28s !important;
+}
+
+.hero-animated-in .hero-subtitle-mono {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    filter: blur(0px) !important;
+    transition: 
+        opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.44s,
+        transform 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.44s,
+        filter 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.44s !important;
+}
+
+.hero-animated-in .hero-top-meta {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: 
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.6s,
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.6s !important;
+}
+
+.hero-animated-in .hero-bottom-meta {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: 
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.7s,
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.7s !important;
+}
+
+body:has(.hero-animated-in) .limelight-nav-container,
+.hero-animated-in ~ #limelight-nav-container {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s !important;
+}
+
+/* ─── Instant Bypass when Loader is Skipped (Internal Navigation / Deep Links) ─── */
+html.no-loader #loader-overlay,
+html.no-loader #loader-gl-canvas,
+body.no-loader #loader-overlay,
+body.no-loader #loader-gl-canvas {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+/* ─── Interactive Replay & Test Dock (Visible on /loading1 only) ─── */
+.loading-test-dock {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: all;
+}
+
+body:not(.is-loading1-page) .loading-test-dock {
+    display: none !important;
+}
+
+.replay-animation-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(14, 14, 14, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #FFFFFF;
+    font-family: var(--font-mono, 'Space Mono', monospace);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.replay-animation-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(255, 255, 255, 0.2);
+}
+
+.replay-animation-btn svg {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.replay-animation-btn:hover svg {
+    transform: rotate(-180deg);
+}
+
+.replay-shortcut-hint {
+    font-family: var(--font-mono, 'Space Mono', monospace);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 3px 7px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

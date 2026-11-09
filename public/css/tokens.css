@@ -1,0 +1,2600 @@
+/* ─── Global Pure Black Root Fix ─── */
+html, body {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* ==========================================================================
+   PORTFOLIO DESIGN REFINEMENT TOKEN SYSTEM — "Editorial Brutalism: Gallery Edition"
+   Single Source of Truth for Tokens, Laws, and Core Visual Language
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /* Surfaces */
+  --bg: #0A0A0A;            /* page */
+  --surface: #101010;       /* panels */
+  --raised: #141414;        /* nested emphasis */
+
+  /* Lines */
+  --hairline: 1px solid rgba(255, 255, 255, 0.10);
+  --hairline-strong: rgba(255, 255, 255, 0.24);
+
+  /* Ink */
+  --text: #F4F1EA;          /* warm white, not #FFF */
+  --muted: #8E8B84;
+  --faint: #6B6862;
+
+  /* Accent — REUSE the site's existing orange hex from the repo (keep it, do not invent a new hue).
+     Text/icon color on top of accent: */
+  --accent: #EB4604;
+  --accent-ink: #FFFFFF;
+
+  /* Type (reuse the fonts ALREADY loaded — do not add new families) */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
+  --font-mono: 'Inter Tight', 'Inter Local', system-ui, sans-serif;
+  --micro: 0.7125rem;       /* 11.4px eyebrow/label size */
+  --track: .16em;           /* eyebrow letter-spacing */
+
+  /* Space — 8px grid */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s6: 48px;
+  --s8: 64px;
+  --section-pad: clamp(5rem, 12vh, 9rem);
+
+  /* Radius */
+  --r-outer: 20px;
+  --r-panel: 16px;
+  --r-media: 14px;
+  --r-meta: 12px;
+  --r-table: 12px;
+  --r-badge: 8px;           /* boxes are sharp */
+  --r-pill: 999px;          /* tags + buttons stay pills */
+  /* --r-media defined above */             /* images never rounded */
+
+  /* Motion */
+  --t-fast: 160ms cubic-bezier(.2, .6, .2, 1);   /* color/border */
+  --t-media: 400ms ease-out;                      /* image scale */
+
+  /* Backwards compatibility aliases */
+  --primary: var(--accent);
+  --primary-light: var(--accent);
+  --primary-dim: var(--surface);
+  --accent-1: var(--accent);
+  --accent-glow: var(--accent);
+  --card: var(--surface);
+  --border: rgba(255, 255, 255, 0.10);
+  --text-muted: var(--muted);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+/*
+ * LAWS:
+ * L1: No hover lift. No transform: translate* on any button/body hover (already removed — keep it removed).
+ * L2: No drop shadows on boxes. Hierarchy comes from hairlines + surface tone, not shadows.
+ * L3: One accent color. White/ink/muted do the rest.
+ * L4: Only the hero name and section titles use the serif italic. Everything else grotesk/mono.
+ */
+
+
+/* ==========================================================================
+   BUTTON SYSTEM (B1–B4) — SITE-WIDE
+   ========================================================================== */
+
+/* Shared Button Base Properties */
+.btn-b1, .btn-b2, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary,
+.back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist, .brand-nav-btn,
+.cert-btn, .tab-btn, .control-btn, .back-to-top-btn, .download-pdf-btn, .watch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  border-radius: var(--r-pill) !important;
+  transition: color var(--t-fast), background-color var(--t-fast), border-color var(--t-fast);
+}
+
+/* Height and padding specifications */
+.btn-b1, .btn-b2, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary,
+.back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist, .brand-nav-btn,
+.cert-btn, .tab-btn, .download-pdf-btn {
+  min-height: 44px;
+  padding: 0 24px;
+}
+
+/* Hero / Large CTAs (52px height) */
+.hero-cta, .banner-cta, .ember-cta-btn, .cta-large {
+  min-height: 52px;
+  padding: 0 28px;
+  font-size: 15px;
+}
+
+/* Touch targets >= 44px for icon buttons */
+.social-icon-btn, .social-mail-btn, .brand-arrow-btn, .carousel-btn, .back-to-top-btn,
+.modal-close-btn, .drawer-close-btn, .control-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+/* Keyboard Only Focus-Visible (2px accent outline offset 3px) */
+:is(.btn-b1, .btn-b2, .btn-b3, .btn-b4, a, button, input):focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+}
+
+/* Law 1: No Hover Lift on button body */
+.btn-b1:hover, .btn-b2:hover, .btn-b3:hover, .btn-b4:hover,
+.btn-primary-gold:hover, .banner-cta:hover, .ember-cta-btn:hover, .btn-action:hover,
+.back-btn:hover, .pp-back-link:hover, .banner-back:hover, .btn-outline:hover,
+.btn-brutalist:hover, .brand-nav-btn:hover, .cert-btn:hover, .tab-btn:hover,
+.control-btn:hover, .back-to-top-btn:hover, .social-mail-btn:hover, .social-icon-btn:hover,
+.btn-book-coffee:hover, .btn-book-coffee.active, .btn-book-coffee:focus {
+  transform: none !important;
+}
+
+/* ─── B1 Primary ───
+   Solid accent bg, accent-ink text.
+   Hover: bg -> warm white (--text), text stays accent-ink. Pure color swap. */
+.btn-b1, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary, .download-pdf-btn {
+  background-color: var(--accent) !important;
+  color: var(--accent-ink) !important;
+  border: 1px solid transparent !important;
+}
+
+.btn-b1:hover, .btn-primary-gold:hover, .banner-cta:hover, .ember-cta-btn:hover, .btn-action.btn-primary:hover, .download-pdf-btn:hover {
+  background-color: var(--text) !important;
+  color: var(--accent-ink) !important;
+  border-color: transparent !important;
+  transform: none !important;
+}
+
+/* ─── B2 Secondary ───
+   Transparent bg, 1px --hairline-strong border, --text text.
+   Hover: border-color -> accent, text -> accent, bg -> accent at 8% alpha. */
+.btn-b2, .back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist-outline,
+.cert-btn, .tab-btn, .control-btn, .back-to-top-btn, .social-mail-btn, .social-icon-btn {
+  background-color: transparent !important;
+  border: 1px solid var(--hairline-strong) !important;
+  color: var(--text) !important;
+}
+
+.btn-b2:hover, .back-btn:hover, .pp-back-link:hover, .banner-back:hover, .btn-outline:hover, .btn-brutalist-outline:hover,
+.cert-btn:hover, .tab-btn:hover, .control-btn:hover, .back-to-top-btn:hover, .social-mail-btn:hover, .social-icon-btn:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background-color: rgba(235, 70, 4, 0.08) !important;
+  transform: none !important;
+}
+
+.brand-nav-btn {
+  background-color: transparent;
+  border: 1px solid var(--hairline-strong);
+  color: var(--muted);
+}
+
+.brand-nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: rgba(235, 70, 4, 0.08);
+  transform: none !important;
+}
+
+.brand-nav-btn.active-brand, .brand-nav-btn.active {
+  border-color: var(--accent) !important;
+  color: var(--text) !important;
+  background-color: rgba(235, 70, 4, 0.12) !important;
+}
+
+/* ─── B3 Text-arrow ("Explore Case Study →") ───
+   No box. Grotesk 600 or mono uppercase, --text, arrow glyph in its own <span class="arrow">.
+   Hover: text -> accent AND the arrow span translates 4px right (glyph only, 160ms). Button body never moves. */
+.btn-b3, .text-arrow-link, a.explore-case-study, .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text) !important;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: color var(--t-fast);
+}
+
+.btn-b3 .arrow, .text-arrow-link .arrow, a.explore-case-study .arrow, .back-link .arrow {
+  display: inline-block;
+  transition: transform var(--t-fast);
+}
+
+.btn-b3:hover, .text-arrow-link:hover, a.explore-case-study:hover, .back-link:hover {
+  color: var(--accent) !important;
+  transform: none !important;
+}
+
+.btn-b3:hover .arrow, .text-arrow-link:hover .arrow, a.explore-case-study:hover .arrow {
+  transform: translateX(4px) !important;
+}
+
+.back-link:hover .arrow {
+  transform: translateX(-4px) !important;
+}
+
+/* ─── B4 Nav link ───
+   --text, no pill.
+   Hover: text -> accent; underline via ::after scaleX 0->1 from left (160ms), 2px, offset 6px. */
+.btn-b4, .nav-link-b4, .nav-dropdown-link, .service-lane-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0;
+  transition: color var(--t-fast);
+}
+
+.btn-b4::after, .nav-link-b4::after, .nav-dropdown-link::after, .service-lane-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-fast);
+}
+
+.btn-b4:hover, .nav-link-b4:hover, .nav-dropdown-link:hover, .service-lane-link:hover {
+  color: var(--accent) !important;
+  transform: none !important;
+}
+
+.btn-b4:hover::after, .nav-link-b4:hover::after, .nav-dropdown-link:hover::after, .service-lane-link:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* ==========================================================================
+   BOX / PANEL SYSTEM (P1–P3) & MEDIA RULES — SITE-WIDE
+   ========================================================================== */
+
+/* ─── P1 Info Panel ───
+   surface bg · 2px radius · 1px hairline · 24px padding (32px desktop)
+   header row = mono eyebrow label + index number in accent
+   interactive panels: hover border -> --hairline-strong only. Zero drop shadows. */
+.panel-p1, .service-card, .analytics-card, .metric-card, .stat-card,
+.spec-card, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box, .sidebar-card,
+.pp-contact-card, .tool-box, .closing-box, .features-table-wrapper, .cert-card, .asset-card {
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+  border-radius: var(--r-panel) !important;
+  box-shadow: none !important;
+  padding: 24px;
+  transition: border-color var(--t-fast);
+}
+
+@media (min-width: 1024px) {
+  .panel-p1, .analytics-card, .sidebar-card, .pp-contact-card {
+    padding: 32px;
+  }
+}
+
+.panel-p1:hover, .service-card:hover, .analytics-card:hover,
+.sidebar-card:hover, .cert-card:hover, .asset-card:hover {
+  border-color: var(--hairline-strong) !important;
+  box-shadow: none !important;
+}
+
+/* ─── P2 Case-Study Card ───
+   hairline box, image flush full-bleed to card edges (no radius, no inner padding around media),
+   index number oversized serif-italic ghost at 8% white beside/behind the title,
+   body padding 24px, meta row divided by hairline.
+   Hover: image scale 1.02 (400ms) + title -> accent + B3 arrow nudge.
+   Collaborations cards keep their existing interaction logic — visual tokens only. */
+.card-p2, .web-row, .case-study-card, .film-card, .film-row, .work-card {
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+  border-radius: var(--r-panel) !important;
+  box-shadow: none !important;
+  transition: border-color var(--t-fast);
+}
+
+.card-p2:hover, .web-row:hover, .case-study-card:hover, .film-card:hover, .work-card:hover {
+  border-color: var(--hairline-strong) !important;
+  box-shadow: none !important;
+}
+
+.card-p2:hover h3, .web-row:hover h3, .case-study-card:hover h3, .film-card:hover h3,
+.card-p2:hover .case-study-title, .web-row:hover .web-row-title, .work-card:hover .work-card-title {
+  color: var(--accent) !important;
+  transition: color var(--t-fast);
+}
+
+/* Collaborations Cards (P2 visual tokens, logic protected) */
+.folio-card {
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+  border-radius: var(--r-panel) !important;
+  box-shadow: none !important;
+  transition: border-color var(--t-fast), filter var(--t-fast) !important;
+}
+
+.folio-card:hover {
+  border-color: var(--hairline-strong) !important;
+  box-shadow: none !important;
+}
+
+.folio-card img {
+  border-radius: var(--r-media, 0) !important;
+}
+
+/* Ghost index numbers for case studies */
+.ghost-index {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.08);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── P3 Testimonial (De-boxed) ───
+   No card at all — editorial pull-quote: oversized " mark in accent,
+   quote in serif italic 1.25–1.5rem, attribution in mono micro. A 2px accent left rule groups the set. */
+.quote-p3, .quote-block, .closing-quote, .testimonial-deboxed {
+  background: transparent !important;
+  border: none !important;
+  border-left: 2px solid var(--accent) !important;
+  
+  box-shadow: none !important;
+  padding: 16px 0 16px 24px !important;
+  margin: 32px 0 !important;
+}
+
+.quote-p3 .quote-mark, .quote-block::before, .testimonial-deboxed .quote-mark {
+  content: '“';
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: -16px;
+}
+
+.quote-p3 blockquote, .quote-block blockquote, .quote-block p, .closing-quote p {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-size: clamp(1.25rem, 2vw, 1.5rem) !important;
+  line-height: 1.4 !important;
+  color: var(--text) !important;
+}
+
+.quote-p3 .author, .quote-author, .quote-attribution, .closing-author {
+  font-family: var(--font-mono) !important;
+  font-size: var(--micro) !important;
+  letter-spacing: var(--track) !important;
+  text-transform: none !important;
+  color: #8E8B84 !important;
+  margin-top: 12px;
+}
+
+/* ─── Media Rules ───
+   radius 0, 1px hairline border.
+   Optional (Selected Web Work thumbnails only): default filter: grayscale(15%) -> 0 on hover (400ms).
+   Never apply filters inside protected sections. */
+.web-image-wrapper {
+  border-radius: var(--r-media, 14px) !important;
+  overflow: hidden !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.web-image-wrapper img {
+  border-radius: var(--r-media, 14px) !important;
+  filter: none !important;
+  transition: transform var(--t-media), filter var(--t-media);
+}
+
+.web-row:hover .web-image-wrapper img {
+  filter: none !important;
+  transform: none !important;
+}
+
+/* Global thumbnail & media: no zoom on hover across the entire website */
+:hover > img,
+:hover img,
+.thumbnail img,
+.thumb img,
+.media-thumb img,
+.card-img img,
+.cinema-strip-card img,
+.cinema-strip-card:hover img,
+.web-row img,
+.web-row:hover img,
+.web-card img,
+.web-card:hover img,
+.case-study-card img,
+.case-study-card:hover img,
+.film-card img,
+.film-card:hover img,
+.video-card img,
+.video-card:hover img,
+.gallery-card img,
+.gallery-card:hover img,
+.grid-wrapper img,
+.grid-wrapper:hover img,
+.lane-card img,
+.lane-card:hover img,
+.reel-card img,
+.reel-card:hover img {
+  transform: none !important;
+}
+
+
+/* ==========================================================================
+   EYEBROW SYSTEM (E1) & SECTION HEADERS — SITE-WIDE
+   ========================================================================== */
+
+/* E1 Eyebrow Base: Mono, uppercase, 11–12px, letter-spacing .16em, color #8E8B84 with index in accent */
+.eyebrow-e1, .web-row-num, .case-study-badge, .section-label, .section-eyebrow,
+.hero-eyebrow, .methodology-eyebrow, .meta-label, .fc-label, .metric-label,
+.psm-label, .brand-eyebrow, .arc-label, .bts-total-label, .char-stat-label,
+.fpart-label, .vo-label, .em-label, .tag, .tech-tag, .service-tag, .spec-pill,
+.tool-category, .flow-step-num, .step-num, .hero-availability,
+.closing-author, .quote-author, .quote-attribution, .services-tab-eyebrow,
+.service-modal-eyebrow, .lane-card-eyebrow, .pp-eyebrow, .channels-eyebrow-badge,
+.cert-eyebrow-badge, .ai-reel-eyebrow, .ember-cta-eyebrow {
+  font-family: var(--font-mono) !important;
+  font-size: var(--micro) !important;
+  font-weight: 500 !important;
+  letter-spacing: var(--track) !important;
+  text-transform: none !important;
+  color: #8E8B84 !important;
+  line-height: 1.4;
+}
+
+.eyebrow-e1 .index, .web-row-num .index, .case-study-badge .index,
+.section-label .index, .section-eyebrow .index {
+  color: var(--accent) !important;
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+/* Full-width hairline top rule for section eyebrows */
+.eyebrow-row, .section-eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: var(--hairline);
+  padding-top: 14px;
+  margin-bottom: 20px;
+}
+
+/* Brand Collaborations Header in Portfolio - Editorial White with Ambient Depth */
+#portfolio .brand-collaborations-header .display-serif-statement,
+#portfolio .brand-collaborations-header .display-serif-statement span:not(.gradient-text),
+.brand-collaborations-header .display-serif-statement,
+.brand-collaborations-header .display-serif-statement span:not(.gradient-text) {
+    font-family: var(--font-serif) !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: clamp(2.4rem, 4.8vw, 3.8rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+
+
+
+
+.gradient-text,
+
+.italic-gradient {
+
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 68%, #FF5A19 92%, #EB4604 100%) !important;
+
+    -webkit-background-clip: text !important;
+
+    -webkit-text-fill-color: transparent !important;
+
+    text-shadow: none !important;
+
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95));
+
+    display: inline-block;
+
+    padding-right: 0.15em;
+
+    margin-right: -0.15em;
+
+}
+
+
+
+.gradient-text .blur-text-word,
+
+.italic-gradient .blur-text-word {
+
+    background: inherit;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+/* Section Header Typography */
+.section-header h2, .display-serif-statement, h2.section-title, .web-showcase-header h2 {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(2rem, 4.5vw, 3.5rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text) !important;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.section-header p.lede, .section-lede {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 640px;
+}
+
+
+/* ==========================================================================
+   FINISHING DETAILS — GRAIN, MARQUEE MASKS, SELECTION, SCROLLBAR, FOCUS
+   ========================================================================== */
+
+/* Film Grain Overlay: 2.5% opacity, pointer-events: none, disabled on mobile */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/images/film-grain.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  body::before {
+    display: none !important;
+  }
+}
+
+/* Marquee Edges: 24px mask-image fade left/right so tags don't hard-clip */
+.marquee-container, .marquee-track-container {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+}
+
+/* Selection Color: accent bg + accent-ink text */
+::selection {
+  background-color: var(--accent) !important;
+  color: var(--accent-ink) !important;
+}
+
+::-moz-selection {
+  background-color: var(--accent) !important;
+  color: var(--accent-ink) !important;
+}
+
+/* Custom Scrollbar: thin, --raised thumb */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--raised);
+  border-radius: var(--r-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hairline-strong);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--raised) var(--bg);
+}
+
+/* Keyboard Only Focus States (2px accent outline offset 3px) */
+:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY (A11Y) & REDUCED MOTION
+   ========================================================================== */
+
+/* Respect User Reduced Motion Preference for new design tokens */
+@media (prefers-reduced-motion: reduce) {
+  .btn-b1, .btn-b2, .btn-b3, .btn-b4,
+  .btn-b3 .arrow, .text-arrow-link .arrow, a.explore-case-study .arrow, .back-link .arrow,
+  .btn-b4::after, .nav-link-b4::after, .nav-dropdown-link::after, .service-lane-link::after,
+  .card-p2, .panel-p1, .web-image-wrapper img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Ensure accessible tap target sizes for interactive elements */
+button:not(.card-mute-btn):not(.phone-mute-btn):not(.reel-mute-btn):not(.control-btn), input[type="submit"], input[type="button"], .btn-b1, .btn-b2 {
+  min-height: 44px;
+}
+
+.card-mute-btn, .phone-mute-btn, .reel-mute-btn, .control-btn {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+
+
+/* ==========================================================================
+   ROUNDNESS SYSTEM — HARMONIOUS & PROPORTIONAL
+   Aligned identity across buttons, tabs, boxes, eyebrows, tables & mockups
+   ========================================================================== */
+
+/* 1. Buttons, Tabs & Filter Capsules */
+.btn-b1, .btn-b2, .btn-primary-gold, .banner-cta, .ember-cta-btn, .btn-action.btn-primary,
+.back-btn, .pp-back-link, .banner-back, .btn-outline, .btn-brutalist, .brand-nav-btn,
+.cert-btn, .tab-btn, .control-btn, .back-to-top-btn, .download-pdf-btn, .watch-btn,
+.nav-capsule, .subpage-nav-capsules .nav-capsule, .browser-address {
+  border-radius: var(--r-pill, 999px) !important;
+}
+
+.subpage-nav-capsules {
+  display: inline-flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-capsule {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px !important;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13.5px;
+  background: #181818 !important;
+  border: 1px solid var(--hairline-strong) !important;
+  color: var(--muted) !important;
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.nav-capsule:hover, .nav-capsule.active {
+  color: var(--text) !important;
+  border-color: var(--accent) !important;
+  background: rgba(235, 70, 4, 0.08) !important;
+}
+
+/* 2. Outer Cards & Overall Containers */
+.case-study-card, .card-p2, .web-row, .showcase-container .case-study-card, .film-card, .film-row {
+  border-radius: var(--r-outer, 20px) !important;
+  background-color: var(--surface) !important;
+  border: var(--hairline) !important;
+}
+
+/* 3. Info Panels & Metric Cards */
+.panel-p1, .service-card, .analytics-card, .metric-card, .stat-card,
+.spec-card, .sidebar-card, .pp-contact-card, .tool-box, .closing-box, .cert-card, .asset-card,
+.folio-card {
+  border-radius: var(--r-panel, 16px) !important;
+}
+
+/* 4. Inner Details Boxes (Category, Role, Timeline, Status) */
+.meta-row, .meta-grid, .event-meta-grid, .work-card-specs, .meta-box {
+  border-radius: var(--r-meta, 12px) !important;
+  background: #0C0C0C !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+/* 5. Inner Eyebrow Tagline Badges & Category Chips */
+.case-study-badge, .eyebrow-e1, .section-label, .tech-tag, .service-tag, .spec-pill,
+.tool-category, .tag, .flow-step-num, .step-num, .outcome-badge, .stat-lbl {
+  border-radius: var(--r-badge, 8px) !important;
+}
+
+.case-study-badge {
+  padding: 6px 14px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  display: inline-flex !important;
+  align-items: center;
+  align-self: flex-start;
+}
+
+/* 6. Key Features Table Box & Rows */
+.features-table-wrapper {
+  border-radius: var(--r-table, 12px) !important;
+  overflow: hidden !important;
+}
+
+.features-table {
+  border-radius: var(--r-table, 12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  overflow: hidden !important;
+  width: 100%;
+}
+
+.features-table th {
+  background: #181818 !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+.features-table th:first-child {
+  border-top-left-radius: 11px !important;
+}
+
+.features-table th:last-child {
+  border-top-right-radius: 11px !important;
+}
+
+.features-table td {
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.features-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.features-table tr:last-child td:first-child {
+  border-bottom-left-radius: 11px !important;
+}
+
+.features-table tr:last-child td:last-child {
+  border-bottom-right-radius: 11px !important;
+}
+
+.features-table tbody tr {
+  transition: background-color var(--t-fast);
+}
+
+.features-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* 7. Screenshots, Browser Mockups & Visual Showcase Frames */
+.project-mockup, .showcase-mockup-wrapper .project-mockup {
+  border-radius: var(--r-media, 14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  overflow: hidden !important;
+  background: #000000 !important;
+}
+
+.browser-bar {
+  border-top-left-radius: 13px !important;
+  border-top-right-radius: 13px !important;
+  background: #161616 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.browser-address {
+  border-radius: var(--r-pill, 999px) !important;
+  background: #080808 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.hotspot-container, .hotspot-container img, .project-mockup img {
+  border-bottom-left-radius: 13px !important;
+  border-bottom-right-radius: 13px !important;
+}
+
+.web-image-wrapper, .web-image-wrapper img {
+  border-radius: var(--r-media, 14px) !important;
+  overflow: hidden !important;
+}
+
+.folio-card img {
+  border-radius: 10px !important;
+}
+
+/* Service Lanes: Restored exact previous version (transparent editorial columns, no grey box) */
+.service-lane {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-lane:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Case Details Grid & Detail Blocks: Clean editorial presentation on main card background */
+.detail-block, .challenge-block, .scope-block {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ─── AI Cinema Thumbnail Roundness & Overlay Fix ─── */
+.film-row-visual,
+.film-row-visual img,
+.film-card-visual,
+.film-card-visual img {
+  border-radius: var(--r-media, 14px) !important;
+  overflow: hidden !important;
+}
+
+/* Override global button pill radius: thumbnail overlay must match 14px rounded rectangle, NOT 999px oval */
+.play-btn-large {
+  border-radius: var(--r-media, 14px) !important;
+}
+
+/* Inner category chips inside video thumbnails */
+.film-badge-chip,
+.film-row-visual > div[style*="position: absolute; top: 16px"],
+.film-card-visual > div[style*="position: absolute; top: 16px"] {
+  border-radius: var(--r-badge, 8px) !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   Direction-Aware Spreading Ripple Button System
+   ════════════════════════════════════════════════════════════════ */
+.btn-ripple-container {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease !important;
+}
+
+.btn-ripple-container .btn-label-base {
+  position: relative !important;
+  z-index: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: inherit !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  transition: none !important;
+}
+
+.btn-ripple-container .btn-ripple-overlay {
+  position: absolute !important;
+  inset: -1px !important;
+  border-radius: inherit !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: inherit !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+  white-space: nowrap !important;
+  clip-path: circle(0px at 50% 50%);
+  will-change: clip-path;
+}
+
+/* Theme 1: White Background (e.g. .btn-explore-capsule) */
+.btn-ripple-container.theme-white-to-orange {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-white-to-orange .btn-label-base {
+  color: #000000 !important;
+}
+.btn-ripple-container.theme-white-to-orange .btn-ripple-overlay {
+  background: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-white-to-orange:hover {
+  background-color: #FFFFFF !important;
+  border-color: var(--accent, #EB4604) !important;
+  color: #000000 !important;
+}
+
+/* Theme 2: Dark / Transparent Outline (e.g. .btn-outline, .btn-brutalist-outline, .back-btn, .social-mail-btn, .brand-nav-btn, .nav-capsule) */
+.btn-ripple-container.theme-dark-to-orange {
+  /* retains dark/transparent base */
+}
+.btn-ripple-container.theme-dark-to-orange .btn-label-base {
+  color: var(--text, #FFFFFF) !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-label-base svg {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-label-base svg circle[fill="currentColor"] {
+  fill: #FFFFFF !important;
+  stroke: none !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay {
+  background: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg path,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg rect,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg circle,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg line,
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg polyline {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-dark-to-orange .btn-ripple-overlay svg circle[fill="currentColor"] {
+  fill: #FFFFFF !important;
+  stroke: none !important;
+}
+.btn-ripple-container.theme-dark-to-orange:hover {
+  background-color: transparent !important;
+  border-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+}
+
+/* Theme 3: Orange Primary (e.g. .btn-primary-gold, .download-pdf-btn, .btn-book-coffee) */
+.btn-ripple-container.theme-orange-to-white {
+  background-color: var(--accent, #EB4604) !important;
+  border-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+  transform: none !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-label-base {
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-label-base svg,
+.btn-ripple-container.theme-orange-to-white .btn-label-base svg path,
+.btn-ripple-container.theme-orange-to-white .btn-label-base svg line {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay svg,
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay svg path,
+.btn-ripple-container.theme-orange-to-white .btn-ripple-overlay svg line {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.btn-ripple-container.theme-orange-to-white:hover {
+  background-color: var(--accent, #EB4604) !important;
+  border-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+  transform: none !important;
+}
+
+
+/* Back To Top Floating Button with Direction-Aware Spreading Ripple */
+.back-to-top-btn.btn-ripple-container {
+  position: fixed !important;
+  background: var(--accent, #EB4604) !important;
+  background-color: var(--accent, #EB4604) !important;
+  color: #FFFFFF !important;
+  border-color: var(--accent, #EB4604) !important;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              background-color 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
+.back-to-top-btn.btn-ripple-container:hover {
+  background: var(--accent, #EB4604) !important;
+  background-color: var(--accent, #EB4604) !important;
+  border-color: #FFFFFF !important;
+}
+.back-to-top-btn.btn-ripple-container .btn-label-base {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+.back-to-top-btn.btn-ripple-container .btn-ripple-overlay {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+@media (max-width: 640px) {
+  .back-to-top-btn.btn-ripple-container .btn-label-base,
+  .back-to-top-btn.btn-ripple-container .btn-ripple-overlay {
+    font-size: 1.25rem !important;
+  }
+}
+
+
+
+/* ─── Dither Card Section Centered in Footer ─── */
+.dither-card-section {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+
+/* ─── Scattered Portfolio Section Flanks (#040404) & Pure Black Center (#000000) ─── */
+#portfolio {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(
+    to right,
+    #040404 0%,
+    #040404 calc(50% - min(47vw, 780px)),
+    #000000 calc(50% - min(47vw, 780px)),
+    #000000 calc(50% + min(47vw, 780px)),
+    #040404 calc(50% + min(47vw, 780px)),
+    #040404 100%
+  ) !important;
+  position: relative !important;
+}
+
+#portfolio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(94vw, 1560px);
+  background: #000000;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  #portfolio {
+    background: #000000 !important;
+  }
+  #portfolio::before {
+    display: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   UNIVERSAL BRAND SUBPAGE REFINEMENTS — ALL BRAND PAGES
+   ========================================================================== */
+
+/* 1. Decreased & Balanced Hero Title Size */
+.brand-page h1, .hero:not(#hero) .hero-title, .brand-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+    line-height: 1.15 !important;
+    font-family: var(--font-serif) !important;
+    font-style: italic !important;
+    letter-spacing: -0.02em !important;
+    text-transform: none !important;
+}
+
+/* 2. Increased Prominent Stat Numbers (Strictly For Numeric Metrics & Analytics) */
+.analytics-num,
+.analytics-row-val,
+.bar-num,
+.fc-value,
+.stat-num,
+.metric-num,
+.hero-stat-number,
+.stat-val-num {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    line-height: 1.1 !important;
+    font-family: var(--font-sans) !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* Metric & Hero Stat Values (Sized prominently with clamp to prevent card overflow) */
+.hero-stat .val,
+.metric-value {
+    font-size: clamp(1.6rem, 2.2vw, 2.1rem) !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    line-height: 1.1 !important;
+    font-family: var(--font-sans) !important;
+    letter-spacing: -0.02em !important;
+}
+
+.hero-stat .lbl,
+.analytics-row-label,
+.metric-label {
+    font-size: 0.72rem !important;
+    color: #BDBDBF !important;
+    letter-spacing: 0.04em !important;
+    text-transform: capitalize !important;
+    margin-top: 6px !important;
+}
+
+/* 2b. Refined Text Metadata Cards & Detail Badges (Role, Studio, Duration, Scope, Platforms) */
+.meta-box-val,
+.em-value,
+.event-meta-val,
+.meta-val,
+.hero-meta-val,
+.meta-value {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.01em !important;
+    font-family: var(--font-sans) !important;
+    text-transform: none !important;
+}
+
+.meta-box-label,
+.meta-box-lbl,
+.em-label,
+.event-meta-lbl,
+.meta-lbl,
+.meta-label {
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    color: #8A8A8E !important;
+    letter-spacing: 0.06em !important;
+    text-transform: none !important;
+    margin-bottom: 5px !important;
+    margin-top: 0 !important;
+    line-height: 1.2 !important;
+    font-family: var(--font-sans) !important;
+}
+
+/* Elegant Metadata Box Layout & Proportions */
+.meta-box,
+.event-meta-item {
+    padding: 12px 16px !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: unset !important;
+    aspect-ratio: unset !important;
+    box-sizing: border-box !important;
+    transition: all 0.25s ease !important;
+}
+
+.meta-box:hover,
+.event-meta-item:hover {
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.hero-meta-strip {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    margin-top: 24px !important;
+}
+
+@media (max-width: 640px) {
+    .hero-meta-strip {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+}
+
+/* Sidebar Row Stats (HashLite, Shift) */
+.platform-stat-mini {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 11px 0 !important;
+    border-bottom: 1px solid var(--border) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+.platform-stat-mini:last-child {
+    border-bottom: none !important;
+}
+
+.platform-stat-mini .psm-label {
+    font-size: 0.82rem !important;
+    color: #8A8A8E !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    margin: 0 !important;
+}
+
+.platform-stat-mini .psm-val {
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    line-height: 1.3 !important;
+    text-align: right !important;
+    margin: 0 !important;
+}
+
+/* 3. Universal Rounded Corners on Videos, Cards, Containers, Boxes, Tabs, Pills & Textboxes */
+/* Large Cards, Media Wrappers, Stages & Containers (20px) */
+.hero-right,
+.video-brutalist-frame,
+.hero-video-element,
+.video-card,
+.video-container,
+.reel-card,
+.reel-card-scuff,
+.reel-video-container,
+.scuff-reel-video,
+.phone-frame,
+.phone-frame-back,
+.ai-reel-media,
+.event-card,
+.service-card,
+.metric-card,
+.platform-card,
+.analytics-card,
+.sidebar-card,
+.work-card,
+.film-card,
+.film-card-visual,
+.film-row-visual,
+.asset-card,
+.cert-card,
+.closing-box,
+.carousel-wrap,
+.lane-card,
+.folio-card,
+.chapter-card,
+.case-study-card,
+.brand-spray-bg-box,
+.brand-packet-card,
+.grid-image-wrap,
+.gallery-media,
+.role-visual-panel,
+.features-table-wrapper {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+/* Workflow Step Boxes, Flow Cards, Tool Boxes & Mid-size Cards (18px) */
+.workflow-step,
+.workflow-grid .workflow-step,
+.tool-box,
+.tools-grid .tool-box,
+.flow-step,
+.booking-flow-steps,
+.step-item,
+.exp-item,
+.edu-item,
+.timeline-item,
+.chapter-box,
+.post-cell {
+    border-radius: 18px !important;
+    overflow: hidden !important;
+}
+
+/* Textboxes, Quotes, Callout Blocks, Detail Panels & Form Fields (16px) */
+.highlight-block,
+.quote-block,
+.big-desc,
+.detail-block,
+.challenge-block,
+.results-block,
+.scope-block,
+.section-block,
+.admin-portal-block,
+.pp-contact-card,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+select {
+    border-radius: 16px !important;
+}
+
+/* Editorial Inset Vertical Accent Rule for Highlight Blocks & Callouts (replaces curved outer border-left) */
+.highlight-block {
+    position: relative !important;
+    border-left: 1px solid var(--border, rgba(255, 255, 255, 0.08)) !important;
+}
+
+.highlight-block::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 24px !important;
+    top: 22px !important;
+    bottom: 22px !important;
+    width: 2px !important;
+    background: var(--brand-accent, var(--brand-color, var(--accent, #EB4604))) !important;
+    border-radius: 2px !important;
+    pointer-events: none !important;
+}
+
+/* Meta Boxes, Stat Modules & Compact Card Items (14px) */
+.event-meta-item,
+.meta-box,
+.bb-item,
+.rvp-stat-card,
+.analytics-row,
+.bar-row,
+.bar-track,
+.mini-bar,
+.brand-logo-frame,
+.bnb-logo {
+    border-radius: 14px !important;
+    overflow: hidden !important;
+}
+
+/* Badges, Eyebrows, Tabs, Buttons & Pill Capsules (Pill radius: 9999px) */
+.header-badge,
+.hero-eyebrow,
+.brand-eyebrow,
+.section-eyebrow,
+.section-label,
+.eyebrow-e1,
+.pp-eyebrow,
+.hospital-capsule,
+.player-capsule,
+.brand-capsule,
+.timeline-brand-capsules,
+.nav-capsule,
+.subpage-nav-capsules a,
+.case-study-badge,
+.gallery-badge,
+.video-badge,
+.reel-badge,
+.credes-badge,
+.credes-badge-pill,
+.reel-concept-badge,
+.cinema-badge,
+.folio-card-tag,
+.film-badge-chip,
+.web-badge,
+.outcome-badge,
+.stat-lbl,
+.tag,
+.tags .tag,
+.spec-pill,
+.work-card-specs .spec-pill,
+.role-pill,
+.skill-tag,
+.tech-tag,
+.platform-tag,
+.service-tag,
+.metric-tag,
+.back-btn,
+.brand-nav-btn,
+.next-project-link,
+.tab-btn,
+.assets-tabs button,
+.carousel-btn,
+.cert-btn,
+.case-study-btn,
+.btn-action,
+.btn-explore-capsule,
+.btn-book-coffee,
+.btn-brutalist,
+.btn-brutalist-outline,
+.btn-primary-gold,
+.download-pdf-btn,
+.watch-btn,
+.social-icon-btn,
+.social-mail-btn {
+    border-radius: 9999px !important;
+}
+
+/* Ensure pulse dots inside badges stay circular */
+.header-badge span,
+.hero-eyebrow span,
+.metric-label .dot,
+.status-dot,
+.pulse-dot {
+    border-radius: 50% !important;
+}
+
+/* Video caption bar inside rounded video frame */
+.video-caption-bar {
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+
+/* 4. Global Eyebrow & Headline Casing (Capitalize first letter only, no all-caps) */
+.section-eyebrow,
+.hero-eyebrow,
+.event-card-title,
+.metric-label,
+.em-label,
+.meta-label,
+.brand-eyebrow,
+.eyebrow-e1,
+.section-label {
+    text-transform: none !important;
+}
+
+
+/* ==========================================================================
+   CANONICAL BRAND FOOTER NAVIGATION (SATTVIK STANDARD — ALL BRAND SUBPAGES)
+   ========================================================================== */
+.brand-nav-bar {
+    background: #000000 !important;
+    border-top: none !important;
+    padding: 40px 5% 52px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.brand-nav-bar::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: -4% !important;
+    width: 108% !important;
+    height: 108% !important;
+    background-image: url('../images/brand-spray-bg.webp') !important;
+    background-size: cover !important;
+    background-position: center 38% !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.65 !important;
+    filter: contrast(1.18) brightness(0.96) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+.brand-nav-bar::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: 
+        radial-gradient(ellipse at 50% 50%, transparent 25%, rgba(0, 0, 0, 0.45) 75%, rgba(0, 0, 0, 0.9) 100%),
+        linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.25) 15%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.3) 85%, #000000 100%) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+.brand-nav-inner {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+}
+
+.brand-nav-label {
+    text-align: center !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+    color: rgba(255, 255, 255, 0.35) !important;
+    margin-bottom: 28px !important;
+    text-transform: none !important;
+    font-family: var(--font-sans) !important;
+}
+
+.brand-nav-grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 24px !important;
+    flex-wrap: nowrap !important;
+}
+
+.brand-nav-group {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    flex: 1 !important;
+    max-width: 520px !important;
+}
+
+.brand-nav-divider {
+    width: 1px !important;
+    height: 84px !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    flex-shrink: 0 !important;
+}
+
+/* ==========================================================================
+   UNIQUE BRAND CAPSULE THEMES (CANONICAL BRAND FOOTER NAVIGATION)
+   - Unique idle background, text color, and logo separation border per brand
+   - Direction-aware liquid ripple to orange background (#EB4604) & white text
+   - Zero-shift pixel-perfect alignment between base and overlay (no popping/jumping)
+   ========================================================================== */
+
+/* 1. Base Layout & Zero-Shift Geometry */
+.brand-nav-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    border-radius: 100px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 9px 18px 9px 10px !important;
+    gap: 9px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    font-family: var(--font-sans) !important;
+    line-height: 1 !important;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
+    transform: none !important;
+}
+
+/* When ripple initialized, transfer padding/gap to inner layers with exact inset: 0 */
+.brand-nav-btn.btn-ripple-container:not(.dc-home) {
+    padding: 0 !important;
+}
+
+.brand-nav-btn:not(.dc-home) .btn-label-base,
+.brand-nav-btn:not(.dc-home) .btn-ripple-overlay {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 9px !important;
+    padding: 9px 18px 9px 10px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    font-family: var(--font-sans) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    white-space: nowrap !important;
+    border-radius: inherit !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+.brand-nav-btn:not(.dc-home) .btn-label-base {
+    position: relative !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.brand-nav-btn:not(.dc-home) .btn-ripple-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    clip-path: circle(0px at 50% 50%);
+    will-change: clip-path;
+    background: var(--accent, #EB4604) !important;
+    background-color: var(--accent, #EB4604) !important;
+    color: #FFFFFF !important;
+}
+
+.brand-nav-btn:hover {
+    transform: none !important;
+}
+
+/* Logo Sizing & Separation Border */
+.brand-nav-btn .bnb-logo {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    transform: none !important;
+}
+
+.brand-nav-btn .btn-ripple-overlay .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 2. Brand-Specific Idle Color Specifications */
+
+/* Untagd: Black bg, Untagd Logo Brown text */
+.brand-nav-btn[href*="untagd"],
+.brand-nav-btn.bnb-untagd {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #8E5731 !important;
+    border: 1px solid rgba(142, 87, 49, 0.5) !important;
+}
+.brand-nav-btn[href*="untagd"] .btn-label-base,
+.brand-nav-btn.bnb-untagd .btn-label-base {
+    color: #8E5731 !important;
+}
+.brand-nav-btn[href*="untagd"] .bnb-logo,
+.brand-nav-btn.bnb-untagd .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Credes: Purple bg (same as logo), White text */
+.brand-nav-btn[href*="credes"],
+.brand-nav-btn.bnb-credes {
+    background-color: #5B52DF !important;
+    background: #5B52DF !important;
+    color: #FFFFFF !important;
+    border: 1px solid #5B52DF !important;
+}
+.brand-nav-btn[href*="credes"] .btn-label-base,
+.brand-nav-btn.bnb-credes .btn-label-base {
+    color: #FFFFFF !important;
+}
+.brand-nav-btn[href*="credes"] .bnb-logo,
+.brand-nav-btn.bnb-credes .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Gujarat Tigers: Black bg, Red text */
+.brand-nav-btn[href*="gujarat-tigers"],
+.brand-nav-btn.bnb-gujarat-tigers {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #F62E24 !important;
+    border: 1px solid rgba(246, 46, 36, 0.5) !important;
+}
+.brand-nav-btn[href*="gujarat-tigers"] .btn-label-base,
+.brand-nav-btn.bnb-gujarat-tigers .btn-label-base {
+    color: #F62E24 !important;
+}
+.brand-nav-btn[href*="gujarat-tigers"] .bnb-logo,
+.brand-nav-btn.bnb-gujarat-tigers .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Sattvik: White bg, Orange text */
+.brand-nav-btn[href*="sattvik"],
+.brand-nav-btn.bnb-sattvik {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #F5811E !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="sattvik"] .btn-label-base,
+.brand-nav-btn.bnb-sattvik .btn-label-base {
+    color: #F5811E !important;
+}
+.brand-nav-btn[href*="sattvik"] .bnb-logo,
+.brand-nav-btn.bnb-sattvik .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Scuff: Pink bg (similar to logo bg), White text */
+.brand-nav-btn[href*="scuff"],
+.brand-nav-btn.bnb-scuff {
+    background-color: #FB3B52 !important;
+    background: #FB3B52 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #FB3B52 !important;
+}
+.brand-nav-btn[href*="scuff"] .btn-label-base,
+.brand-nav-btn.bnb-scuff .btn-label-base {
+    color: #FFFFFF !important;
+}
+.brand-nav-btn[href*="scuff"] .bnb-logo,
+.brand-nav-btn.bnb-scuff .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* HighRocks: Black bg, White text */
+.brand-nav-btn[href*="highrocks"],
+.brand-nav-btn.bnb-highrocks {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+.brand-nav-btn[href*="highrocks"] .btn-label-base,
+.brand-nav-btn.bnb-highrocks .btn-label-base {
+    color: #FFFFFF !important;
+}
+.brand-nav-btn[href*="highrocks"] .bnb-logo,
+.brand-nav-btn.bnb-highrocks .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Shelf: Black bg, Cyan text */
+.brand-nav-btn[href*="shelf"],
+.brand-nav-btn.bnb-shelf {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #3EA0AD !important;
+    border: 1px solid rgba(62, 160, 173, 0.5) !important;
+}
+.brand-nav-btn[href*="shelf"] .btn-label-base,
+.brand-nav-btn.bnb-shelf .btn-label-base {
+    color: #3EA0AD !important;
+}
+.brand-nav-btn[href*="shelf"] .bnb-logo,
+.brand-nav-btn.bnb-shelf .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* ESFI: White bg, Black text */
+.brand-nav-btn[href*="esfi"],
+.brand-nav-btn.bnb-esfi {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="esfi"] .btn-label-base,
+.brand-nav-btn.bnb-esfi .btn-label-base {
+    color: #000000 !important;
+}
+.brand-nav-btn[href*="esfi"] .bnb-logo,
+.brand-nav-btn.bnb-esfi .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* White Horse: Black bg, Orange text */
+.brand-nav-btn[href*="white-horse"],
+.brand-nav-btn.bnb-white-horse {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #EB4604 !important;
+    border: 1px solid rgba(235, 70, 4, 0.5) !important;
+}
+.brand-nav-btn[href*="white-horse"] .btn-label-base,
+.brand-nav-btn.bnb-white-horse .btn-label-base {
+    color: #EB4604 !important;
+}
+.brand-nav-btn[href*="white-horse"] .bnb-logo,
+.brand-nav-btn.bnb-white-horse .bnb-logo {
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Finanvo: White bg, Green text */
+.brand-nav-btn[href*="finanvo"],
+.brand-nav-btn.bnb-finanvo {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #2E7D32 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="finanvo"] .btn-label-base,
+.brand-nav-btn.bnb-finanvo .btn-label-base {
+    color: #2E7D32 !important;
+}
+.brand-nav-btn[href*="finanvo"] .bnb-logo,
+.brand-nav-btn.bnb-finanvo .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Shift: White bg, Orange text */
+.brand-nav-btn[href*="shift"],
+.brand-nav-btn.bnb-shift {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #FB5910 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="shift"] .btn-label-base,
+.brand-nav-btn.bnb-shift .btn-label-base {
+    color: #FB5910 !important;
+}
+.brand-nav-btn[href*="shift"] .bnb-logo,
+.brand-nav-btn.bnb-shift .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Giffy: Yellow bg, Brown text */
+.brand-nav-btn[href*="giffy"],
+.brand-nav-btn.bnb-giffy {
+    background-color: #FEAF48 !important;
+    background: #FEAF48 !important;
+    color: #5A2900 !important;
+    border: 1px solid #FEAF48 !important;
+}
+.brand-nav-btn[href*="giffy"] .btn-label-base,
+.brand-nav-btn.bnb-giffy .btn-label-base {
+    color: #5A2900 !important;
+}
+.brand-nav-btn[href*="giffy"] .bnb-logo,
+.brand-nav-btn.bnb-giffy .bnb-logo {
+    border: 1px solid rgba(90, 41, 0, 0.28) !important;
+}
+
+/* Hashlite: Light Green bg, Pink text */
+.brand-nav-btn[href*="hashlite"],
+.brand-nav-btn.bnb-hashlite {
+    background-color: #DDF5E5 !important;
+    background: #DDF5E5 !important;
+    color: #D81B60 !important;
+    border: 1px solid #DDF5E5 !important;
+}
+.brand-nav-btn[href*="hashlite"] .btn-label-base,
+.brand-nav-btn.bnb-hashlite .btn-label-base {
+    color: #D81B60 !important;
+}
+.brand-nav-btn[href*="hashlite"] .bnb-logo,
+.brand-nav-btn.bnb-hashlite .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.14) !important;
+}
+
+/* Aspire: White bg, Black text */
+.brand-nav-btn[href*="aspire"],
+.brand-nav-btn.bnb-aspire {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 1px solid #FFFFFF !important;
+}
+.brand-nav-btn[href*="aspire"] .btn-label-base,
+.brand-nav-btn.bnb-aspire .btn-label-base {
+    color: #000000 !important;
+}
+.brand-nav-btn[href*="aspire"] .bnb-logo,
+.brand-nav-btn.bnb-aspire .bnb-logo {
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Active brand: retain capsule theme and add glowing active ring */
+.brand-nav-btn.active-brand {
+    box-shadow: 0 0 0 2px var(--accent, #EB4604), 0 2px 10px rgba(235, 70, 4, 0.35) !important;
+    pointer-events: none !important;
+}
+
+/* Theme 4: Orange To Dark / Transparent (DC Home Logo in Brand Nav Footer) */
+.btn-ripple-container.theme-orange-to-dark,
+.brand-nav-btn.dc-home {
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: var(--accent, #EB4604) !important;
+    background: var(--accent, #EB4604) !important;
+    border: 1.5px solid var(--accent, #EB4604) !important;
+    color: #FFFFFF !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    min-height: unset !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transform: none !important;
+    box-shadow: 0 4px 18px rgba(235, 70, 4, 0.35) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark .btn-label-base,
+.brand-nav-btn.dc-home .btn-label-base {
+    color: #FFFFFF !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
+    transform: none !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark .btn-ripple-overlay,
+.brand-nav-btn.dc-home .btn-ripple-overlay {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 50% !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    transform: none !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark .btn-label-base img,
+.btn-ripple-container.theme-orange-to-dark .btn-ripple-overlay img,
+.brand-nav-btn.dc-home img {
+    width: 28px !important;
+    height: 28px !important;
+    display: block !important;
+    object-fit: contain !important;
+    transform: none !important;
+}
+
+.btn-ripple-container.theme-orange-to-dark:hover,
+.brand-nav-btn.dc-home:hover {
+    background-color: var(--accent, #EB4604) !important;
+    border-color: rgba(235, 70, 4, 0.7) !important;
+    color: #FFFFFF !important;
+    transform: none !important;
+    box-shadow: 0 4px 22px rgba(235, 70, 4, 0.45) !important;
+}
+
+.brand-nav-btn.dc-home img {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+@media (max-width: 1150px) {
+    .brand-nav-grid {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    .brand-nav-divider {
+        display: none !important;
+    }
+    .brand-nav-group {
+        max-width: 500px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .brand-nav-group {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+    .brand-nav-btn {
+        font-size: 0.72rem !important;
+        padding: 7px 14px 7px 8px !important;
+        gap: 7px !important;
+    }
+    .brand-nav-btn .bnb-logo {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-nav-group {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* ─── Universal Title & Subtitle Linear Gradient (White to Orange/Peach) ─── */
+h1 span.grad,
+h1 .grad,
+.hero-title .grad,
+.hero-title span.grad,
+.hero-subtitle span,
+.case-study .section-title span,
+.sidebar-card h3,
+.event-card-title,
+.event-name span,
+.pp-section-title,
+.exp-title {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFB27A 45%, #EB4604 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    display: inline-block;
+}
+
+/* ─── Globally Remove All Blinking / Pulse Dots ─── */
+.header-badge span,
+.blinking-dot,
+.pulse-dot,
+.status-dot,
+.live-pulse-dot {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+
+        /* === GLOBAL BRAND PAGE TYPOGRAPHY HIERARCHY === */
+        /* Brand Name at Top: Largest heading on the entire brand page */
+        .hero:not(#hero) h1,
+        .hero.hero-with-analytics h1,
+        .hero.hero-with-cert-carousel h1,
+        .hero.hero-with-channels h1 {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(3.2rem, 6vw, 4.8rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.08 !important;
+            background: linear-gradient(135deg, #FFFFFF 20%, #FFA875 60%, #EB4604 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+            display: inline-block !important;
+        }
+
+        /* Section Subtitles / Headers: Decreased size with compulsory white-to-orange/peach gradient */
+        .case-study h2, .main-content h2, .section-title, .ai-reel-info h2, .gallery-section-title {
+            font-family: var(--font-serif) !important;
+            font-style: italic !important;
+            letter-spacing: -0.02em !important;
+            font-size: clamp(2rem, 3.6vw, 2.8rem) !important;
+            font-weight: 400 !important;
+            line-height: 1.15 !important;
+            margin-bottom: 22px !important;
+            background: linear-gradient(135deg, #FFFFFF 20%, #FFA875 60%, #EB4604 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+            display: inline-block !important;
+        }
+
+        /* Kutch Cinema Scale Title - Pure White */
+.cinema-scale-title,
+#ai-cinema .cinema-scale-title {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+}
+
+/* Homepage hero title: pure white with full descender clearance (no clipping of y and j) */
+        #hero .hero-title,
+        #hero .hero-title span,
+        .hero-main-content .hero-title,
+        .hero-main-content .hero-title span {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            line-height: 1.05 !important;
+            padding-bottom: 0.04em !important;
+            overflow: visible !important;
+            mix-blend-mode: difference !important;
+        }
+
+        /* Spans inherit gradient cleanly removed to prevent breaking non-gradient spans and word wrappers */
+
+
+
+        /* === UNIVERSAL ORANGE CAPSULE TAGS === */
+        .tags, .service-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin-top: 18px !important;
+        }
+
+        .tag, .service-tag, .work-card-tag {
+            font-size: 0.72rem !important;
+            font-weight: 600 !important;
+            padding: 5px 12px !important;
+            border-radius: 9999px !important;
+            background: rgba(235, 70, 4, 0.12) !important;
+            border: 1px solid rgba(235, 70, 4, 0.35) !important;
+            color: #FFA875 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            letter-spacing: 0.02em !important;
+            line-height: 1.2 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .tag:hover, .service-tag:hover, .work-card-tag:hover {
+            background: rgba(235, 70, 4, 0.22) !important;
+            border-color: rgba(235, 70, 4, 0.6) !important;
+            color: #FFFFFF !important;
+            transform: none !important;
+        }
+
+
+/* ==========================================================================
+   GLOBAL DIRECTIVES (USER SPECIFICATION)
+   1. Disable all-caps globally (preserve natural title/sentence casing)
+   2. Zero-popup / zero-scale on hover across all elements site-wide
+   3. Single-line 'Where I've Worked' heading
+   4. Brand footer seamless blend without border strip divider
+   ========================================================================== */
+
+/* 1. Global No Forced All-Caps */
+*, *::before, *::after {
+    text-transform: none;
+}
+
+/* 2. Global No Hover Popup / Float / Scale / Image Zoom (Strictly Enforced) */
+/* Prevent all cards, boxes, tabs, textboxes, components, and buttons from floating/moving up on hover */
+.brand-nav-btn.dc-home:hover,
+.brand-nav-btn:hover,
+.dc-home:hover,
+.channel-icon-wrap-3,
+.channel-icon-wrap-6,
+.channel-tab-3:hover .channel-icon-wrap-3,
+.channel-tab-6:hover .channel-icon-wrap-6,
+.phone-mute-btn:hover,
+.card-mute-btn:hover,
+.folio-card:hover,
+.holo-card:hover,
+.founder-review-card:hover,
+.tag:hover,
+.service-tag:hover,
+.work-card-tag:hover,
+.btn-primary-gold:hover,
+.btn-outline:hover,
+.btn-brutalist-filled:hover,
+.btn-brutalist-outline:hover,
+.btn-book-coffee:hover,
+.social-icon-btn:hover,
+.social-mail-btn:hover,
+.download-pdf-btn:hover,
+.back-btn:hover,
+.nav-capsule:hover,
+.tab-btn:hover,
+.tab:hover,
+.box:hover,
+.textbox:hover,
+.component:hover,
+.analytics-card:hover,
+.cert-card:hover,
+.asset-card:hover,
+.channel-tab:hover,
+.channel-tab-3:hover,
+.phone-frame:hover,
+.post-cell:hover,
+.reel-card:hover,
+.reel-card-scuff:hover,
+.workflow-step:hover,
+.tool-box:hover,
+.work-card:hover,
+.feature-card:hover,
+.card-p2:hover,
+.service-card:hover,
+.cert-btn:hover,
+.carousel-dot:hover,
+.cert-dot:hover,
+.reel-dot:hover,
+.modal-close-btn:hover,
+.copy-url-btn:hover,
+.control-btn:hover,
+.hotspot:hover .hotspot-dot,
+.case-study-btn:hover,
+.timeline-thumb:hover,
+.brand-capsule:hover,
+/* .web-row:hover excluded for pinned scale */
+.web-card:hover,
+.case-study-card:hover,
+.film-card:hover,
+.video-card:hover,
+.lane-card:hover,
+.cinema-strip-card:hover,
+/* cinema-scale-card excluded */
+.limelight-nav-item:hover,
+.limelight-nav-item:hover .nav-icon,
+[class*="card"]:not(.cinema-scale-card):not(.web-circ-card):not(.floating-card):not(.web-cards-strip):not(.web-cards-viewport):not(#webCardsStrip):hover,
+[class*="box"]:hover,
+[class*="tab"]:hover,
+[class*="frame"]:not(.phone-frame-back):not(.phone-frame):hover,
+[class*="badge"]:not(.reel-badge):not(#heroReelBadge):hover,
+[class*="thumb"]:hover {
+    transform: none !important;
+}
+
+/* Maintain vertical centering for carousel navigation buttons without scaling or floating */
+.carousel-btn:hover,
+.slider-btn:hover,
+.cert-nav-btn:hover {
+    transform: translateY(-50%) !important;
+}
+
+/* Maintain center alignment for play buttons without scale */
+.reel-play-btn:hover,
+.reel-play-pause-btn:hover {
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Maintain horizontal centering for elements positioned with translateX(-50%) */
+.reel-badge,
+.reel-badge:hover,
+#heroReelBadge,
+#heroReelBadge:hover,
+.phone-frame,
+.phone-frame:hover,
+.reel-dots,
+.reel-dots:hover,
+.browser-address,
+.browser-address:hover,
+.hero-instructions,
+.hero-instructions:hover,
+.loading-test-dock,
+.loading-test-dock:hover {
+    transform: translateX(-50%) !important;
+}
+
+/* Maintain 3D perspective orientation for phone frames in Credes */
+.phone-frame-back,
+.phone-frame-back:hover {
+    pointer-events: none !important;
+}
+.phone-frame-back.left,
+.phone-frame-back.left:hover {
+    transform: perspective(600px) rotateY(12deg) scale(0.88) !important;
+}
+.phone-frame-back.right,
+.phone-frame-back.right:hover {
+    transform: perspective(600px) rotateY(-12deg) scale(0.88) !important;
+}
+
+/* Strictly ban all image zooming/scaling on hovering over any card, box, tab, component, or media */
+img,
+img:hover,
+:hover > img,
+:hover img,
+.tab:hover img,
+.box:hover img,
+.card:hover img,
+[class*="card"]:hover img,
+[class*="tab"]:hover img,
+[class*="box"]:hover img,
+[class*="frame"]:hover img,
+[class*="thumb"]:hover img,
+[class*="media"]:hover img,
+.cert-slide-inner:hover img,
+.cert-img-link:hover img,
+.cert-slide-img:hover,
+.lane-card:hover .lane-card-image-wrap img,
+.web-row:hover .web-image-wrapper img,
+.channel-icon-wrap,
+:hover .channel-icon-wrap,
+.channel-tab:hover .channel-icon-wrap,
+.brand-capsule:hover img,
+.brand-nav-btn:hover img {
+    transform: none !important;
+}
+
+/* 3. Single-Line Where I've Worked Heading */
+#experience .section-header .display-serif-statement {
+    white-space: nowrap !important;
+}
+
+@media (max-width: 480px) {
+    #experience .section-header .display-serif-statement {
+        font-size: clamp(26px, 7vw, 36px) !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* Unified 60px Editorial Headlines */
+#about-section .section-header h2,
+#about-section h2.display-serif-statement,
+#about-section .display-serif-statement,
+#experience .section-header h2,
+#experience h2.display-serif-statement,
+.reviews-headline,
+h2.reviews-headline {
+    font-size: 60px !important;
+    line-height: 1.08 !important;
+}
+
+/* Contact Headline: 55px */
+.contact-headline,
+h2.contact-headline {
+    font-size: 55px !important;
+    line-height: 1.08 !important;
+}
+
+/* ==========================================================================
+   Brand Pages - High-Performance Media Blur-In Reveal
+   ========================================================================== */
+.media-blur-reveal {
+    opacity: 0;
+    filter: blur(14px);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, filter;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.media-blur-reveal.revealed {
+    opacity: 1;
+    filter: blur(0px);
+}
+
+/* Once fully transitioned into view, release GPU layers */
+.media-blur-reveal.revealed.settled {
+    filter: none !important;
+    will-change: auto !important;
+    transform: none !important;
+}
+
+/* Instant reset off-screen so scrolling back blurs in cleanly */
+.media-blur-reveal.media-resetting {
+    transition: none !important;
+    opacity: 0 !important;
+    filter: blur(14px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .media-blur-reveal {
+        opacity: 1 !important;
+        filter: none !important;
+        transition: none !important;
+        will-change: auto !important;
+        transform: none !important;
+    }
+}
+
+/* Services Section Heading — Pure Editorial White (No Gradient) & Aligned Flush */
+#services .display-serif-statement,
+#services .display-serif-statement span,
+#services .section-header h2,
+#services .section-header h2 span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+@media (min-width: 1024px) {
+    #services .section-header {
+        margin-left: 0 !important;
+    }
+}
+
+/* Contact Tab Extended Width */
+@media (min-width: 769px) {
+    .contact-left-col,
+    .contact-info-left {
+        max-width: 700px !important;
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Limelight Navigation Bar Center-Lock Safeguard
+   Guarantees the floating navigation drawer is always centered horizontally
+   and cannot be shifted or broken by any transitions, scripts, or loaders.
+   ========================================================================== */
+#limelight-nav-container,
+.limelight-nav-container {
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+#limelight-nav-container:not(.is-open):not(.is-dragging),
+.limelight-nav-container:not(.is-open):not(.is-dragging) {
+    left: 50% !important;
+    transform: translateX(-50%) translateY(calc(-100% + var(--handle-height, 32px) - var(--nav-top-spacing, 16px))) !important;
+}
+
+#limelight-nav-container.is-open:not(.is-dragging),
+.limelight-nav-container.is-open:not(.is-dragging) {
+    left: 50% !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* ==========================================================================
+   Services to Reviews Intersection Divider & Smooth Gradient Blur Conversion
+   ========================================================================== */
+#services-side-rays {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 98%) !important;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 98%) !important;
+}
+
+.section-intersection-divider {
+    position: relative !important;
+    width: 100vw !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 100px !important;
+    margin-top: -50px !important;
+    margin-bottom: -50px !important;
+    z-index: 25 !important;
+    pointer-events: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.section-intersection-divider::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.45) 30%,
+        rgba(0, 0, 0, 0.85) 60%,
+        #000000 100%
+    ) !important;
+    pointer-events: none !important;
+}
+
+.divider-line-track {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 1400px !important;
+    padding: 0 clamp(20px, 4vw, 48px) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.divider-line-core {
+    width: 100% !important;
+    height: 1px !important;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.04) 10%,
+        rgba(255, 255, 255, 0.20) 50%,
+        rgba(255, 255, 255, 0.04) 90%,
+        transparent 100%
+    ) !important;
+    position: relative !important;
+}
+
+.divider-line-core::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: 10% !important;
+    right: 10% !important;
+    height: 25px !important;
+    background: radial-gradient(
+        ellipse 60% 100% at 50% 50%,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 180, 110, 0.06) 40%,
+        transparent 75%
+    ) !important;
+    filter: blur(8px) !important;
+    pointer-events: none !important;
+}
+
+/* ==========================================================================
+   Reviews to Footer Depth Transition: Seamless Black Reviews & Upward CTA Accent Shadow
+   ========================================================================== */
+.reviews-split-section {
+    position: relative !important;
+    z-index: 10 !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #000000 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.reviews-split-grid {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+
+.reviews-split-section::after {
+    display: none !important;
+}
+
+.cta-accent-drop-shadow {
+    display: none !important;
+}
+
+.cta-section {
+    position: relative !important;
+    z-index: 30 !important;
+    border-top-left-radius: clamp(36px, 5vw, 64px) !important;
+    border-top-right-radius: clamp(36px, 5vw, 64px) !important;
+    overflow: hidden !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 
+        0 -1px 0 rgba(255, 255, 255, 0.26),
+        0 -10px 30px -2px rgba(255, 255, 255, 0.20),
+        0 -25px 55px -6px rgba(240, 246, 252, 0.14),
+        0 -50px 95px -12px rgba(225, 235, 248, 0.08),
+        0 -80px 140px -20px rgba(210, 225, 242, 0.04) !important;
+}
+
+.cta-section::before {
+    display: none !important;
+}
+
+.cta-section > canvas {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+}
+
+/* Social Connect Label in Footer */
+.social-connect-label {
+    font-family: var(--font-sans, 'Inter Tight', sans-serif) !important;
+    font-size: 12px !important;
+    color: #A8B48B !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    user-select: none !important;
+    margin-right: 6px !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+}

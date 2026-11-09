@@ -1,0 +1,129 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SIDE RAYS VOLUMETRIC LIGHT & SPECULAR TAB HIGHLIGHTS
+   React Bits WebGL2 SideRays implementation for #services section
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Section Canvas Container — Full Viewport Bleed (Edge to Edge) */
+.side-rays {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity;
+}
+
+.side-rays.is-active {
+    opacity: 1;
+}
+
+.side-rays__canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Ensure Services Section establishes positioning context & allows full-bleed canvas */
+#services.services-section {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+#services .section-header,
+#services .services-accordion-lanes {
+    position: relative;
+    z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SPECULAR TAB BORDER REFLECTIONS (Incident Light from Top-Right)
+   Top and right edges catch soft amber (#FFC46B) & cyan (#96C8FF) directional reflection.
+   NO outer shadow/glow added to cards per user specification.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.lane-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    border: 1px solid transparent;
+}
+
+/* Base rim reflection when rays are active */
+#services.rays-active .lane-card::before {
+    opacity: 1;
+}
+
+/* Card 04 (Rightmost — closest to top-right sunray origin):
+   Clear, soft specular top and right border reflection */
+.lane-card[data-lane="4"]::before {
+    border-top: 1px solid rgba(255, 205, 125, 0.42);
+    border-right: 1px solid rgba(160, 215, 255, 0.32);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    background: radial-gradient(
+        ellipse 90% 60% at 90% 0%,
+        rgba(255, 196, 107, 0.08) 0%,
+        transparent 65%
+    );
+}
+
+/* Card 03: Soft specular top and right reflection */
+.lane-card[data-lane="3"]::before {
+    border-top: 1px solid rgba(255, 196, 107, 0.28);
+    border-right: 1px solid rgba(150, 200, 255, 0.22);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    background: radial-gradient(
+        ellipse 85% 55% at 85% 0%,
+        rgba(255, 196, 107, 0.05) 0%,
+        transparent 60%
+    );
+}
+
+/* Card 02: Subtle glancing edge reflection */
+.lane-card[data-lane="2"]::before {
+    border-top: 1px solid rgba(255, 196, 107, 0.18);
+    border-right: 1px solid rgba(150, 200, 255, 0.14);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+}
+
+/* Card 01: Very faint ambient glancing reflection */
+.lane-card[data-lane="1"]::before {
+    border-top: 1px solid rgba(255, 196, 107, 0.10);
+    border-right: 1px solid rgba(150, 200, 255, 0.08);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+}
+
+/* Strictly NO shadow glow on any tab (clean cards only) */
+#services.rays-active .lane-card,
+#services.rays-active .lane-card.active,
+#services.rays-active .lane-card:hover {
+    box-shadow: none !important;
+}
+
+#services.rays-active .lane-card:hover::before {
+    filter: brightness(1.2);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .lane-card::before {
+        border-radius: 16px;
+    }
+}
